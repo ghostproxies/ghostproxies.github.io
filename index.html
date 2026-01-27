@@ -144,6 +144,28 @@
       p {
         margin: 0 0 44px;
       }
+      .ectoplasm {
+        margin: 70px 0 90px 90px;
+      }
+        .ectoplasm h2 {
+          margin-top: 7px;
+        }
+        .ectoplasm img {
+          height: 150px;
+          left: -98px;
+          position: absolute;
+          top: -42px;
+          transition-duration: 2s, 1.5s;
+          transition-property: opacity, top;
+          transition-timing-function: steps(30, jump-start);
+          width: 106px;
+        }
+          .ectoplasm img[pulse="0"] {
+            opacity: 0.7;
+          }
+          .ectoplasm img[pulse="1"] {
+            opacity: 1;
+          }
     </style>
   </head>
   <body>
@@ -151,6 +173,12 @@
     <main>
       <h1>Invisible Computing Conduits</h1>
       <p>GhostProxies closes efficiency gaps in computational randomness.</p>
+      <div class="ectoplasm">
+        <img src="randy-the-ghost.png">
+        <a href="javascript:alert('Ectoplasm is coming soon.')"></a>
+        <h2><span style="color: #4e96ff;">E</span><span style="color: #4eaaff;">c</span><span style="color: #4edcff;">t</span><span style="color: #4efaff;">o</span><span style="color: #4effc3;">p</span><span style="color: #4eff8f;">l</span><span style="color: #50ff4e;">a</span><span style="color: #88ff4e;">s</span><span style="color: #b4ff4e;">m</span></h2>
+        <p>Ectoplasm is an efficient cloud RNG API.</p>
+      </div>
       <div>
         <a href="https://github.com/ghostproxies/zonesplit"></a>
         <img height="30" src="zonesplit.jpg" width="30">
@@ -186,5 +214,42 @@
       <p>Copyright <a href="https://github.com/williamstaffordparsons">William Stafford Parsons</a></p>
       <small>As a disclaimer, GhostProxies is unaffiliated with proxy server rental services.</small>
     </footer>
+    <script>
+      onload = function() {
+        const ectoplasmImageElement = document.querySelector(".ectoplasm img")
+
+        setInterval(function() {
+          const ectoplasmFloatId = setInterval(function() {
+            clearTimeout(ectoplasmFloatId)
+            ectoplasmImageElement.setAttribute("style", "top: -42px;")
+          }, 1500)
+
+          ectoplasmImageElement.setAttribute("style", "top: -33px;")
+        }, 3000)
+
+        const ectoplasmFloatId = setInterval(function() {
+          clearTimeout(ectoplasmFloatId)
+          ectoplasmImageElement.setAttribute("style", "top: -42px;")
+        }, 1500)
+
+        ectoplasmImageElement.setAttribute("style", "top: -33px;")
+
+        setInterval(function() {
+          const ectoplasmPulseId = setInterval(function() {
+            clearTimeout(ectoplasmPulseId)
+            ectoplasmImageElement.setAttribute("pulse", "1")
+          }, 2000)
+
+          ectoplasmImageElement.setAttribute("pulse", "0")
+        }, 4000)
+
+        const ectoplasmPulseId = setInterval(function() {
+          clearTimeout(ectoplasmPulseId)
+          ectoplasmImageElement.setAttribute("pulse", "1")
+        }, 2000)
+
+        ectoplasmImageElement.setAttribute("pulse", "0")
+      }
+    </script>
   </body>
 </html>
