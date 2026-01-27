@@ -160,11 +160,11 @@
           transition-timing-function: steps(30, jump-start);
           width: 106px;
         }
-          .ectoplasm img[pulse="0"] {
-            opacity: 0.7;
+          .ectoplasm img.float {
+            top: -33px;
           }
-          .ectoplasm img[pulse="1"] {
-            opacity: 1;
+          .ectoplasm img.pulse {
+            opacity: 0.7;
           }
       @media (max-width: 340px) {
         .ectoplasm {
@@ -224,39 +224,32 @@
     </footer>
     <script>
       onload = function() {
+        let ectoplasmFloatState = false
+        let ectoplasmPulseState = false
         const ectoplasmImageElement = document.querySelector(".ectoplasm img")
 
         setInterval(function() {
-          const ectoplasmFloatId = setInterval(function() {
-            clearTimeout(ectoplasmFloatId)
-            ectoplasmImageElement.setAttribute("style", "top: -42px;")
-          }, 1500)
+          if (ectoplasmFloatState) {
+            return
+          }
 
-          ectoplasmImageElement.setAttribute("style", "top: -33px;")
-        }, 3000)
-
-        const ectoplasmFloatId = setInterval(function() {
-          clearTimeout(ectoplasmFloatId)
-          ectoplasmImageElement.setAttribute("style", "top: -42px;")
+          ectoplasmFloatState = true
+          ectoplasmImageElement.classList.toggle("float")
+          ectoplasmFloatState = false
         }, 1500)
 
-        ectoplasmImageElement.setAttribute("style", "top: -33px;")
-
         setInterval(function() {
-          const ectoplasmPulseId = setInterval(function() {
-            clearTimeout(ectoplasmPulseId)
-            ectoplasmImageElement.setAttribute("pulse", "1")
-          }, 2000)
+          if (ectoplasmPulseState) {
+            return
+          }
 
-          ectoplasmImageElement.setAttribute("pulse", "0")
-        }, 4000)
-
-        const ectoplasmPulseId = setInterval(function() {
-          clearTimeout(ectoplasmPulseId)
-          ectoplasmImageElement.setAttribute("pulse", "1")
+          ectoplasmPulseState = true
+          ectoplasmImageElement.classList.toggle("pulse")
+          ectoplasmPulseState = false
         }, 2000)
 
-        ectoplasmImageElement.setAttribute("pulse", "0")
+        ectoplasmImageElement.classList.toggle("float")
+        ectoplasmImageElement.classList.toggle("pulse")
       }
     </script>
   </body>
