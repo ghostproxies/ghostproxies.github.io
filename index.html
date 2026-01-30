@@ -145,12 +145,16 @@
         margin: 0 0 44px;
       }
       .ectoplasm {
+        float: right;
+      }
+      .nightmare {
         margin: 70px 0 90px 95px;
       }
-        .ectoplasm h2 {
-          margin-top: 7px;
+        .nightmare h2,
+        .product h2 {
+          margin-top: 8px;
         }
-        .ectoplasm img {
+        .nightmare img {
           height: 150px;
           left: -96px;
           position: absolute;
@@ -160,17 +164,28 @@
           transition-timing-function: steps(30, jump-start);
           width: 106px;
         }
-          .ectoplasm img.float {
+          .nightmare img.float {
             top: -33px;
           }
-          .ectoplasm img.pulse {
+          .nightmare img.pulse {
             opacity: 0.7;
           }
-      @media (max-width: 340px) {
+      .product {
+        width: 225px;
+      }
+      @media (max-width: 520px) {
         .ectoplasm {
+          float: none;
+        }
+        .product {
+          width: auto;
+        }
+      }
+      @media (max-width: 340px) {
+        .nightmare {
           margin: 70px 0 90px;
         }
-          .ectoplasm img {
+          .nightmare img {
             display: none;
           }
       }
@@ -181,11 +196,21 @@
     <main>
       <h1>Invisible Computing Conduits</h1>
       <p>GhostProxies closes efficiency gaps in computational randomness.</p>
-      <div class="ectoplasm">
+      <div class="nightmare">
         <img src="william-the-wraith.png">
         <a href="mailto:william@ghostproxies.com"></a>
+        <h2><span style="color: #b4ff4e;">N</span><span style="color: #ffec4e;">i</span><span style="color: #ffc44e;">g</span><span style="color: #ff8c4e;">h</span><span style="color: #ff4e76;">t</span><span style="color: #ff4e97;">m</span><span style="color: #ff4eca;">a</span><span style="color: #ff4ef5;">r</span><span style="color: #f54eff;">e</span></h2>
+        <p>Nightmare is a support plan for enterprise software.</p>
+      </div>
+      <div class="product ectoplasm">
+        <a href="mailto:william@ghostproxies.com"></a>
         <h2><span style="color: #4e96ff;">E</span><span style="color: #4eaaff;">c</span><span style="color: #4edcff;">t</span><span style="color: #4efaff;">o</span><span style="color: #4effc3;">p</span><span style="color: #4eff8f;">l</span><span style="color: #50ff4e;">a</span><span style="color: #88ff4e;">s</span><span style="color: #b4ff4e;">m</span></h2>
-        <p>Ectoplasm is a support plan for enterprise software.</p>
+        <p>Ectoplasm is an RNG API.</p>
+      </div>
+      <div class="product tome">
+        <a href="mailto:william@ghostproxies.com"></a>
+        <h2><span style="color: #f54eff;">T</span><span style="color: #ca4eff;">o</span><span style="color: #984eff;">m</span><span style="color: #4e96ff;">e</span></h2>
+        <p>Tome is the book of entropy.</p>
       </div>
       <div>
         <a href="https://github.com/ghostproxies/zonesplit"></a>
@@ -224,32 +249,32 @@
     </footer>
     <script>
       onload = function() {
-        let ectoplasmFloatState = false
-        let ectoplasmPulseState = false
-        const ectoplasmImageElement = document.querySelector(".ectoplasm img")
+        let nightmareFloatState = false
+        let nightmarePulseState = false
+        const nightmareImageElement = document.querySelector(".nightmare img")
 
         setInterval(function() {
-          if (ectoplasmFloatState) {
+          if (nightmareFloatState) {
             return
           }
 
-          ectoplasmFloatState = true
-          ectoplasmImageElement.classList.toggle("float")
-          ectoplasmFloatState = false
+          nightmareFloatState = true
+          nightmareImageElement.classList.toggle("float")
+          nightmareFloatState = false
         }, 1500)
 
         setInterval(function() {
-          if (ectoplasmPulseState) {
+          if (nightmarePulseState) {
             return
           }
 
-          ectoplasmPulseState = true
-          ectoplasmImageElement.classList.toggle("pulse")
-          ectoplasmPulseState = false
+          nightmarePulseState = true
+          nightmareImageElement.classList.toggle("pulse")
+          nightmarePulseState = false
         }, 2000)
 
-        ectoplasmImageElement.classList.toggle("float")
-        ectoplasmImageElement.classList.toggle("pulse")
+        nightmareImageElement.classList.toggle("float")
+        nightmareImageElement.classList.toggle("pulse")
       }
     </script>
   </body>
