@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Tome™</title>
+    <meta name="description" content="Tome™ is a multi-level SLA for GhostProxies open-source software.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com/tome">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      div a,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      div p,
+      html {
+        margin: 0;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #999;
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: -0.2px;
+        line-height: 18px;
+        margin: 4px 0 18px;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      div {
+        background: #000;
+        border-radius: 5px;
+        margin: 0 0 20px;
+        padding: 21px 26px 22px;
+      }
+        div a:focus-visible {
+          border-radius: 4px;
+          outline: 4px solid;
+        }
+        div a {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+        }
+        div img {
+          display: block;
+          margin: 7px 0 0 1px;
+        }
+        div p {
+          color: #aaa;
+        }
+      div,
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+      }
+      div,
+      header {
+        position: relative;
+      }
+      footer {
+        margin: 0 auto 91px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer img {
+          display: block;
+          height: 16px;
+        }
+        footer p:first-child {
+          margin-bottom: 22px;
+        }
+          footer p:first-child a {
+            margin-bottom: 10px;
+          }
+        footer p {
+          margin: 0 0 27px;
+        }
+      footer,
+      header,
+      main {
+        max-width: 600px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.6px;
+        line-height: 24px;
+        margin: 0 0 35px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+      }
+        header a {
+          display: block;
+          width: 30px;
+        }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 53px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+      }
+    </style>
+  </head>
+  <body>
+    <header><a href="/"><img height="30" src="ghostproxies-logo-black.svg" width="30"></a></header>
+    <main>
+      <h1>Tome<span style="color: #777; margin-left: 1px;">™</span></h1>
+      <p>Tome™ is a multi-level SLA for GhostProxies <a href="https://github.com/ghostproxies">open-source software</a>.</p>
+      <p>Superseding <a href="mailto: william@ghostproxies.com">contractual agreements</a> are available to bind liability to GhostProxies for specific guarantees that are otherwise waived obligatorily by OSS licensing.</p>
+      <p>For example, a Tome™ client may require a guarantee that the following prime number sequences are irrelevant to the practical security properties of a specific algorithm.</p>
+      <h2>Sequence 1</h2>
+      <p>In a set of 3 adjacent prime numbers (<code>a</code>, <code>b</code> and <code>c</code>) when <code>a</code> and <code>c</code> have the difference of 10, <code>b</code> is the result of increasing <code>a</code> by either 4 or 6.</p>
+      <p>The following C program validates the consistency of the aforementioned correlation among the first 20k primes.</p>
+      <code>#<span style="color: #4e96ff;">include</span> <span style="color: #ca4eff;">&lt;stdio.h&gt;</span>
+
+<span style="color: #984eff;">int</span> <span style="color: #4e96ff;">main</span>(<span style="color: #984eff;">void</span>) {
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">primes</span>[<span style="color: #ca4eff;">20000</span>];
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">dividend</span> = <span style="color: #ca4eff;">3</span>;
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">divisor</span>;
+  <span style="color: #984eff;">size_t</span> <span style="color: #fff;">i</span> = <span style="color: #ca4eff;">1</span>;
+  <span style="color: #984eff;">unsigned char</span> <span style="color: #fff;">is_prime</span>;
+  <span style="color: #984eff;">unsigned char</span> <span style="color: #fff;">is_correlation</span> = <span style="color: #ca4eff;">1</span>;
+
+  <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">i</span> < <span style="color: #ca4eff;">20000</span>) {
+    <span style="color: #fff;">divisor</span> = <span style="color: #ca4eff;">3</span>;
+    <span style="color: #fff;">is_prime</span> = <span style="color: #ca4eff;">1</span>;
+
+    <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">divisor</span> < <span style="color: #fff;">dividend</span>) {
+      <span style="color: #4e96ff;">if</span> (!(<span style="color: #fff;">dividend</span> % <span style="color: #fff;">divisor</span>)) {
+        <span style="color: #fff;">is_prime</span> = <span style="color: #ca4eff;">0</span>;
+        <span style="color: #4e96ff;">break</span>;
+      }
+
+      <span style="color: #fff;">divisor</span> += <span style="color: #ca4eff;">2</span>;
+    }
+
+    <span style="color: #4e96ff;">if</span> (<span style="color: #fff;">is_prime</span>) {
+      <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>] = <span style="color: #fff;">dividend</span>;
+      <span style="color: #fff;">i</span>++;
+    }
+
+    <span style="color: #fff;">dividend</span> += <span style="color: #ca4eff;">2</span>;
+  }
+
+  <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">i</span> > <span style="color: #ca4eff;">9</span>) {
+    <span style="color: #fff;">i</span>--;
+
+    <span style="color: #4e96ff;">if</span> (
+      (<span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>] - <span style="color: #ca4eff;">10</span>) == <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">2</span>] &&
+      (<span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">1</span>] + <span style="color: #ca4eff;">4</span>) != <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>] &&
+      (<span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">1</span>] + <span style="color: #ca4eff;">6</span>) != <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>]
+    ) {
+      <span style="color: #fff;">is_correlation</span> = <span style="color: #ca4eff;">0</span>;
+      <span style="color: #4e96ff;">break</span>;
+    }
+  }
+
+  <span style="color: #4e96ff;">if</span> (<span style="color: #fff;">is_correlation</span>) {
+    <span style="color: #4e96ff;">printf</span>(<span style="color: #ca4eff;">"The correlation is consistent among the first 20k primes.\n"</span>);
+  }
+
+  <span style="color: #4e96ff;">return</span> <span style="color: #ca4eff;">0</span>;
+}</code>
+      <h2>Sequence 2</h2>
+      <p>In a set of 4 adjacent prime numbers (<code>a</code>, <code>b</code>, <code>c</code> and <code>d</code>) when <code>a</code> and <code>d</code> have the difference of 10, <code>c</code> is the result of increasing <code>b</code> by 2.</p>
+      <p>The following C program validates the consistency of the aforementioned correlation among the first 20k primes.</p>
+      <code style="margin-bottom: 0;">#<span style="color: #4e96ff;">include</span> <span style="color: #ca4eff;">&lt;stdio.h&gt;</span>
+
+<span style="color: #984eff;">int</span> <span style="color: #4e96ff;">main</span>(<span style="color: #984eff;">void</span>) {
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">primes</span>[<span style="color: #ca4eff;">20000</span>];
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">dividend</span> = <span style="color: #ca4eff;">3</span>;
+  <span style="color: #984eff;">long</span> <span style="color: #fff;">divisor</span>;
+  <span style="color: #984eff;">size_t</span> <span style="color: #fff;">i</span> = <span style="color: #ca4eff;">1</span>;
+  <span style="color: #984eff;">unsigned char</span> <span style="color: #fff;">is_prime</span>;
+  <span style="color: #984eff;">unsigned char</span> <span style="color: #fff;">is_correlation</span> = <span style="color: #ca4eff;">1</span>;
+
+  <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">i</span> < <span style="color: #ca4eff;">20000</span>) {
+    <span style="color: #fff;">divisor</span> = <span style="color: #ca4eff;">3</span>;
+    <span style="color: #fff;">is_prime</span> = <span style="color: #ca4eff;">1</span>;
+
+    <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">divisor</span> < <span style="color: #fff;">dividend</span>) {
+      <span style="color: #4e96ff;">if</span> (!(<span style="color: #fff;">dividend</span> % <span style="color: #fff;">divisor</span>)) {
+        <span style="color: #fff;">is_prime</span> = <span style="color: #ca4eff;">0</span>;
+        <span style="color: #4e96ff;">break</span>;
+      }
+
+      <span style="color: #fff;">divisor</span> += <span style="color: #ca4eff;">2</span>;
+    }
+
+    <span style="color: #4e96ff;">if</span> (<span style="color: #fff;">is_prime</span>) {
+      <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>] = <span style="color: #fff;">dividend</span>;
+      <span style="color: #fff;">i</span>++;
+    }
+
+    <span style="color: #fff;">dividend</span> += <span style="color: #ca4eff;">2</span>;
+  }
+
+  <span style="color: #4e96ff;">while</span> (<span style="color: #fff;">i</span> > <span style="color: #ca4eff;">9</span>) {
+    <span style="color: #fff;">i</span>--;
+
+    <span style="color: #4e96ff;">if</span> (
+      (<span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span>] - <span style="color: #ca4eff;">10</span>) == <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">3</span>] &&
+      (<span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">2</span>] + <span style="color: #ca4eff;">2</span>) != <span style="color: #fff;">primes</span>[<span style="color: #fff;">i</span> - <span style="color: #ca4eff;">1</span>]
+    ) {
+      <span style="color: #fff;">is_correlation</span> = <span style="color: #ca4eff;">0</span>;
+      <span style="color: #4e96ff;">break</span>;
+    }
+  }
+
+  <span style="color: #4e96ff;">if</span> (<span style="color: #fff;">is_correlation</span>) {
+    <span style="color: #4e96ff;">printf</span>(<span style="color: #ca4eff;">"The correlation is consistent among the first 20k primes.\n"</span>);
+  }
+
+  <span style="color: #4e96ff;">return</span> <span style="color: #ca4eff;">0</span>;
+}</code>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto: william@ghostproxies.com">Contact</a><a href="privacy">Privacy</a></p>
+      <p><a href="https://github.com/ghostproxies"><img src="icon-github.jpg"></a><a href="https://www.reddit.com/user/ghostproxies/"><img src="icon-reddit.jpg"></a></p>
+      <p>Copyright 2013-2026 GhostProxies</p>
+      <small>All unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+    </footer>
+  </body>
+</html>
