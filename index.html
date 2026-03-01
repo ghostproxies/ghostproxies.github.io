@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Invisible Randomness Conduits</title>
+    <meta name="description" content="GhostProxies closes efficiency gaps in both classical and quantum RNG systems.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      a,
+      h3 {
+        font-weight: bold;
+      }
+      body,
+      div a,
+      footer,
+      h1,
+      h2,
+      h3,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      div p,
+      html {
+        margin: 0;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      h3,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+      }
+      div {
+        background: #000;
+        border-radius: 5px;
+        margin: 0 0 20px;
+        padding: 21px 26px 22px;
+      }
+        div:last-child {
+          margin-bottom: 0;
+        }
+        div a:focus-visible {
+          border-radius: 4px;
+          outline: 4px solid;
+        }
+        div a {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          z-index: 2;
+        }
+        div img {
+          display: inline-block;
+          margin: 7px 0 6px 1px;
+        }
+        div p {
+          color: #aaa;
+        }
+      div,
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+      }
+      div,
+      header {
+        position: relative;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer p {
+          margin: 0 0 9px;
+        }
+          footer p a {
+            margin-bottom: 10px;
+          }
+      footer,
+      header,
+      main {
+        max-width: 600px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+        h1 span {
+          position: relative;
+        }
+          h1 span span {
+            background: #e9e9e9;
+            border-radius: 20px;
+            height: 4px;
+            left: 19px;
+            overflow: hidden;
+            position: absolute;
+            top: 5px;
+            width: 209px;
+          }
+            h1 span span:first-child span,
+            h1 span span:last-child span.flow {
+              left: 300px;
+            }
+            h1 span span:last-child span,
+            h1 span span:first-child span.flow {
+              left: -80px;
+            }
+            h1 span span span {
+              background: #000;
+              height: 4px;
+              position: absolute;
+              top: 0;
+              width: 80px;
+            }
+              h1 span span span.flow {
+                transition-duration: 0.29s;
+                transition-property: left;
+                transition-timing-function: steps(200, jump-end);
+              }
+      h1,
+      h2,
+      h3,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 23px;
+        padding-top: 23px;
+      }
+      h3 {
+        color: #eee;
+        letter-spacing: -0.1px;
+        line-height: 12px;
+        margin: 8px 0;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+      }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 58px;
+      }
+        main p {
+          margin: 0;
+        }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+      .ectoplasm {
+        float: right;
+      }
+      .ectoplasm,
+      .tome {
+        width: 265px;
+      }
+      .element {
+        position: absolute;
+      }
+      .legal-symbol {
+        color: #777;
+        font-weight: normal;
+        letter-spacing: 0;
+        margin-left: 1px;
+      }
+      .nightmare {
+        overflow: hidden;
+        padding-top: 76px;
+        position: relative;
+      }
+      .shake-large-0 {margin-top: -7px !important;}
+      .shake-large-1 {margin-top: 6px !important;}
+      .shake-large-2 {margin-left: -6px !important;}
+      .shake-large-3 {margin-left: 7px !important;}
+      .shake-small-0 {margin-top: -3px !important;}
+      .shake-small-1 {margin-top: 2px !important;}
+      .shake-small-2 {margin-left: -2px !important;}
+      .shake-small-3 {margin-left: 3px !important;}
+      .turret {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: 20px;
+        width: 20px;
+      }
+      .turret,
+      .weapon {
+        background-color: #000;
+        border-color: #fff;
+        transition-duration: 0.05s, 0.05s, 0.04s, 0.04s;
+        transition-property: left, top, margin-left, margin-top;
+        transition-timing-function: steps(3, jump-none);
+        z-index: 1;
+      }
+      .turret,
+      .weapon,
+      .weapon-muzzle-flash,
+      .weapon-projectile {
+        border-style: solid;
+        border-width: 4px;
+      }
+      .weapon {
+        border-radius: 8px;
+        height: 4px;
+        width: 4px;
+      }
+      .weapon-muzzle-flash {
+        border-color: #aaa;
+        border-radius: 50px;
+        height: 0;
+        width: 0;
+        z-index: 1;
+      }
+      .weapon-projectile {
+        background-color: #777;
+        border-color: #000;
+        border-radius: 8px;
+        height: 8px;
+        margin-left: -4px;
+        margin-top: -4px;
+        width: 8px;
+      }
+      @media (max-width: 600px) {
+        h1 span {
+          display: none;
+        }
+        .ectoplasm,
+        .tome {
+          float: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><img height="36" src="ghostproxies-logo-black.svg" width="36"></header>
+    <main>
+      <h1>Invisible Randomness Conduits<span></span></h1>
+      <p style="margin-bottom: 15px;">GhostProxies closes efficiency gaps in both classical and quantum RNG systems.</p>
+      <h2>Enterprise</h2>
+      <div class="nightmare">
+        <a href="nightmare"></a>
+        <h3><span style="color: #fff;">N</span><span style="color: #fdfdfd;">i</span><span style="color: #fbfbfb;">g</span><span style="color: #f9f9f9;">h</span><span style="color: #f7f7f7;">t</span><span style="color: #f5f5f5;">m</span><span style="color: #f3f3f3;">a</span><span style="color: #f1f1f1;">r</span>e<span class="legal-symbol">℠</span></h3>
+        <p>Nightmare℠ is the RNG system efficiency enhancement service.</p>
+      </div>
+      <div class="ectoplasm">
+        <a href="ectoplasm"></a>
+        <h3><span style="color: #fff;">E</span><span style="color: #fdfdfd;">c</span><span style="color: #fbfbfb;">t</span><span style="color: #f9f9f9;">o</span><span style="color: #f7f7f7;">p</span><span style="color: #f5f5f5;">l</span><span style="color: #f3f3f3;">a</span><span style="color: #f1f1f1;">s</span>m<span class="legal-symbol">™</span></h3>
+        <p>Ectoplasm™ is the entropy schema.</p>
+      </div>
+      <div class="tome">
+        <a href="tome"></a>
+        <h3><span style="color: #fff;">T</span><span style="color: #f8f8f8;">o</span><span style="color: #f4f4f4;">m</span>e<span class="legal-symbol">™</span></h3>
+        <p>Tome™ is a multi-level SLA.</p>
+      </div>
+      <h2>Open Source</h2>
+      <div>
+        <a href="https://github.com/ghostproxies/pulsefield"></a>
+        <img height="36" src="pulsefield.jpg" width="36">
+        <h3><span style="color: #fff;">P</span><span style="color: #fdfdfd;">u</span><span style="color: #fbfbfb;">l</span><span style="color: #f9f9f9;">s</span><span style="color: #f7f7f7;">e</span><span style="color: #f5f5f5;">f</span><span style="color: #f3f3f3;">i</span><span style="color: #f1f1f1;">e</span><span style="color: #f1f1f1;">l</span>d<span class="legal-symbol">™</span></h3>
+        <p>PulseField™ is the algorithm for parallel PRNG sequence segmentation.</p>
+      </div>
+      <div>
+        <a href="https://github.com/ghostproxies/flurrygate"></a>
+        <img height="36" src="flurrygate.jpg" width="36">
+        <h3><span style="color: #fff;">F</span><span style="color: #fdfdfd;">l</span><span style="color: #fbfbfb;">u</span><span style="color: #f9f9f9;">r</span><span style="color: #f7f7f7;">r</span><span style="color: #f5f5f5;">y</span><span style="color: #f3f3f3;">g</span><span style="color: #f1f1f1;">a</span><span style="color: #f1f1f1;">t</span>e<span class="legal-symbol">™</span></h3>
+        <p>FlurryGate™ is the algorithm for PRNG minimum period extension.</p>
+      </div>
+      <div>
+        <a href="https://github.com/ghostproxies/blastcircuit"></a>
+        <img height="36" src="blastcircuit.jpg" width="36">
+        <h3><span style="color: #fff;">B</span><span style="color: #fefefe;">l</span><span style="color: #fdfdfd;">a</span><span style="color: #fbfbfb;">s</span><span style="color: #f9f9f9;">t</span><span style="color: #f7f7f7;">c</span><span style="color: #f7f7f7;">i</span><span style="color: #f5f5f5;">r</span><span style="color: #f3f3f3;">c</span><span style="color: #f1f1f1;">u</span><span style="color: #f1f1f1;">i</span>t<span class="legal-symbol">™</span></h3>
+        <p>BlastCircuit™ is the efficient non-cryptographic PRNG for 64-bit output.</p>
+      </div>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto: williamstaffordparsons@proton.me">Contact</a><a href="privacy">Privacy</a></p>
+      <small>Copyright 2013-2026 GhostProxies</small>
+      <small>All unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small style="word-break: break-all;">BTC: <a href="https://proton.me/wallet/explorer/address/bc1q8fwh6npytl2ceer8msgmc7fw4hjnynv4f274cp">bc1q8fwh6npytl2ceer8msgmc7fw4hjnynv4f274cp</a></small>
+    </footer>
+    <script>
+      "use strict"
+
+      let pseudorandomness = Date.now() & 65535
+      let pseudorandomnessA = 0
+      let pseudorandomnessB = 0
+      let pseudorandomnessC = 0
+      let pseudorandomnessD = 0
+      let pseudorandomnessE = 0
+      let pseudorandomnessF = 0
+      let turretShakeState = false
+      let weaponMuzzleFlashStateA = false
+      let weaponShoot = function() {}
+      let weaponShootDelay = 0
+      let weaponShootId
+      let weaponShootState = false
+      let weaponSwitchState = false
+      const boundsElement = document.querySelector(".nightmare")
+      const turretElement = document.createElement("span")
+      const weaponElement = document.createElement("span")
+
+      const weaponMuzzleFlash = function() {
+        if (weaponMuzzleFlashStateA) {
+          return
+        }
+
+        weaponMuzzleFlashStateA = true
+
+        let weaponMuzzleFlashMargin = 2
+        let weaponMuzzleFlashSize = 0
+        let weaponMuzzleFlashStateB = false
+        const weaponMuzzleFlashOffsetLeft = 58
+        const weaponMuzzleFlashOffsetTop = 40
+
+        const weaponMuzzleFlashId = setInterval(function() {
+          if (weaponMuzzleFlashStateB) {
+            return
+          }
+
+          weaponMuzzleFlashStateB = true
+
+          if (weaponMuzzleFlashSize < 50) {
+            weaponMuzzleFlashMargin -= 5
+            weaponMuzzleFlashSize += 10
+            weaponMuzzleFlashElement.setAttribute(
+              "style",
+              "height: "
+                + weaponMuzzleFlashSize
+                + "px; left: "
+                + weaponMuzzleFlashOffsetLeft
+                + "px; margin-left: "
+                + weaponMuzzleFlashMargin
+                + "px; margin-top: "
+                + weaponMuzzleFlashMargin
+                + "px; top: "
+                + weaponMuzzleFlashOffsetTop
+                + "px; width: "
+                + weaponMuzzleFlashSize
+                + "px;"
+            )
+            weaponMuzzleFlashStateB = false
+            return
+          }
+
+          clearInterval(weaponMuzzleFlashId)
+          weaponMuzzleFlashElement.setAttribute(
+            "style",
+            "left: -64px; top: -64px;"
+          )
+          weaponMuzzleFlashStateA = false
+        }, 15)
+      }
+
+      const weaponMuzzleFlashChildElement = document.createElement("span")
+
+      weaponMuzzleFlashChildElement.setAttribute(
+        "class",
+        "element weapon-muzzle-flash"
+      )
+      weaponMuzzleFlashChildElement.setAttribute(
+        "style",
+        "left: -64px; top: -64px;"
+      )
+
+      const weaponMuzzleFlashElement = boundsElement.appendChild(
+        weaponMuzzleFlashChildElement
+      )
+      const weaponProjectileElements = Array(48)
+
+      const weaponShootMachineGun = function() {
+        const weaponProjectileElement = weaponProjectileElements.pop()
+
+        if (weaponProjectileElement == undefined) {
+          return
+        }
+
+        let turretShakeDelay = 0
+
+        const turretShakeId = setInterval(function() {
+          if (turretShakeState) {
+            return
+          }
+
+          turretShakeState = true
+
+          if (turretShakeDelay > 4) {
+            clearInterval(turretShakeId)
+            turretElement.setAttribute(
+              "class",
+              "element turret"
+            )
+            weaponElement.setAttribute(
+              "class",
+              "element weapon"
+            )
+            turretShakeState = false
+            return
+          }
+
+          turretElement.setAttribute(
+            "class",
+            "element shake-large-"
+              + pseudorandomnessA
+              + " turret"
+          )
+          weaponElement.setAttribute(
+            "class",
+            "element shake-small-"
+              + pseudorandomnessB
+              + " weapon"
+          )
+          pseudorandomnessA = (pseudorandomnessA + 1) & 3
+          turretShakeDelay++
+          turretShakeState = false
+        }, 25)
+
+        weaponMuzzleFlash()
+
+        const weaponProjectileOffsetLeftStep = (pseudorandomnessE + 24) * 0.5
+        const weaponProjectileOffsetTopStep = pseudorandomnessF * 0.5
+        let weaponProjectileOffsetDelay = 0
+        let weaponProjectileOffsetLeft = weaponProjectileOffsetLeftStep + 62
+        let weaponProjectileOffsetTop = weaponProjectileOffsetTopStep + 41
+
+        const weaponProjectileMove = function(weaponProjectileMoveId) {
+          weaponProjectileOffsetDelay ^= 1
+          weaponProjectileOffsetLeft += weaponProjectileOffsetLeftStep
+          weaponProjectileOffsetTop += weaponProjectileOffsetTopStep
+
+          if (weaponProjectileOffsetDelay) {
+            weaponProjectileElement.setAttribute(
+              "style",
+              "left: "
+                + weaponProjectileOffsetLeft
+                + "px; top: "
+                + weaponProjectileOffsetTop
+                + "px;"
+            )
+          }
+        }
+
+        const weaponProjectileMoveId = setInterval(function() {
+          if (weaponProjectileOffsetLeft < 570) {
+            weaponProjectileMove(weaponProjectileMoveId)
+            return
+          }
+
+          clearInterval(weaponProjectileMoveId)
+          weaponProjectileElements.push(weaponProjectileElement)
+        }, 15)
+      }
+
+      const weaponShootShotgun = function() {
+        if (weaponShootDelay < 3) {
+          weaponShootDelay++
+          return
+        }
+
+        weaponShootDelay = 0
+
+        let turretShakeDelay = 0
+
+        const turretShakeId = setInterval(function() {
+          if (turretShakeState) { 
+            return
+          }
+
+          turretShakeState = true
+
+          if (turretShakeDelay > 4) {
+            clearInterval(turretShakeId)
+            turretElement.setAttribute(
+              "class",
+              "element turret"
+            )
+            weaponElement.setAttribute(
+              "class",
+              "element weapon"
+            )
+            turretShakeState = false
+            return
+          }
+
+          turretElement.setAttribute(
+            "class",
+            "element shake-large-"
+              + pseudorandomnessA
+              + " turret"
+          )
+          weaponElement.setAttribute(
+            "class",
+            "element shake-small-"
+              + pseudorandomnessB
+              + " weapon"
+          )
+          pseudorandomnessA = (pseudorandomnessA + 1) & 3
+          turretShakeDelay++
+          turretShakeState = false
+        }, 25)
+
+        weaponMuzzleFlash()
+
+        let weaponProjectileDelay = 0
+
+        const weaponProjectileSpawn = function() {
+          const weaponProjectileElement = weaponProjectileElements.pop()
+
+          if (weaponProjectileElement == undefined) {
+            return
+          }
+
+          const weaponProjectileOffsetLeftStep = (
+            (pseudorandomnessA - pseudorandomnessB) + 24
+          ) * 0.5
+          const weaponProjectileOffsetTopStep = (
+            pseudorandomnessC - pseudorandomnessD
+          ) * 0.5
+          let weaponProjectileOffsetDelay = 0
+          let weaponProjectileOffsetLeft = weaponProjectileOffsetLeftStep + 62
+          let weaponProjectileOffsetTop = weaponProjectileOffsetTopStep + 41
+
+          const weaponProjectileMove = function(weaponProjectileMoveId) {
+            weaponProjectileOffsetDelay ^= 1
+            weaponProjectileOffsetLeft += weaponProjectileOffsetLeftStep
+            weaponProjectileOffsetTop += weaponProjectileOffsetTopStep
+
+            if (weaponProjectileOffsetDelay) {
+              weaponProjectileElement.setAttribute(
+                "style",
+                "left: "
+                  + weaponProjectileOffsetLeft
+                  + "px; top: "
+                  + weaponProjectileOffsetTop
+                  + "px;"
+              )
+            }
+          }
+
+          const weaponProjectileMoveId = setInterval(function() {
+            if (weaponProjectileOffsetLeft < 570) {
+              weaponProjectileMove(weaponProjectileMoveId)
+              return
+            }
+
+            clearInterval(weaponProjectileMoveId)
+            weaponProjectileElements.push(weaponProjectileElement)
+          }, 15)
+        }
+
+        while (weaponProjectileDelay < 36) {
+          const weaponProjectileSpawnId = setInterval(function() {
+            clearInterval(weaponProjectileSpawnId)
+            pseudorandomnessA = (pseudorandomnessA + pseudorandomnessD) & 3
+            pseudorandomnessB = (pseudorandomnessA + pseudorandomnessB) & 3
+            pseudorandomnessC = (pseudorandomnessB + pseudorandomnessC) & 3
+            pseudorandomnessD = (pseudorandomnessC + pseudorandomnessD) & 3
+            weaponProjectileSpawn()
+          }, weaponProjectileDelay)
+
+          weaponProjectileDelay += 6
+        }
+      }
+
+      onload = function() {
+        let conduitSelector = 3
+        const conduitContainerElement = document.querySelector("h1 span")
+
+        while (conduitSelector > 1) {
+          conduitSelector--
+
+          const conduitElement = document.createElement("span")
+          const conduitFlowElement = document.createElement("span")
+
+          conduitElement.setAttribute(
+            "style",
+            "top: "
+              + ((conduitSelector << 3) - 4)
+              + "px;"
+          )
+          conduitElement.appendChild(conduitFlowElement)
+          conduitContainerElement.appendChild(conduitElement)
+        }
+
+        let conduitFlowState = false
+        const conduitFlowElements = [
+          document.querySelector("h1 span span:first-child span"),
+          document.querySelector("h1 span span:last-child span")
+        ]
+
+        setInterval(function() {
+          if (conduitFlowState) {
+            return
+          }
+
+          conduitFlowState = true
+          conduitFlowElements[conduitSelector].classList.toggle("flow")
+          conduitSelector ^= 1
+          conduitFlowState = false
+        }, 300)
+
+        let turretActivateState = false
+
+        const turretActivate = function() {
+          let i = 0
+          let pseudorandomnessIncrease = ((Date.now() & 31) + 186) | 1
+          let pseudorandomnessState = false
+          let timeCountState = false
+
+          turretElement.setAttribute(
+            "class",
+            "element turret"
+          )
+          turretElement.setAttribute(
+            "style",
+            "left: 28px; top: 32px;"
+          )
+          boundsElement.appendChild(turretElement)
+          weaponElement.setAttribute(
+            "class",
+            "element weapon"
+          )
+          weaponElement.setAttribute(
+            "style",
+            "left: 58px; top: 40px;"
+          )
+          boundsElement.appendChild(weaponElement)
+
+          while (i < 48) {
+            weaponProjectileElements[i] = document.createElement("span")
+            weaponProjectileElements[i].setAttribute(
+              "class",
+              "element weapon-projectile"
+            )
+            weaponProjectileElements[i].setAttribute(
+              "style",
+              "left: -64px; top: -64px;"
+            )
+            weaponProjectileElements[i] = boundsElement.appendChild(
+              weaponProjectileElements[i]
+            )
+            i++
+          }
+
+          setInterval(function() {
+            if (weaponShootState) {
+              return
+            }
+
+            weaponShootState = true
+            weaponShoot()
+            weaponShootState = false
+          }, 100)
+
+          i = 0
+
+          setInterval(function() {
+            if (weaponSwitchState) {
+              return
+            }
+
+            weaponSwitchState = true
+
+            if (i) {
+              weaponShoot = weaponShootMachineGun
+            } else {
+              weaponShoot = weaponShootShotgun
+            }
+
+            i ^= 1
+            pseudorandomnessIncrease = (((Date.now() >>> 13) & 31) + 186) | 1
+            weaponSwitchState = false
+          }, 2000)
+
+          weaponShoot = weaponShootMachineGun
+
+          setInterval(function() {
+            if (pseudorandomnessState) {
+              return
+            }
+
+            pseudorandomnessState = true
+            pseudorandomness = (
+              pseudorandomness + pseudorandomnessIncrease
+            ) & 65535
+            pseudorandomnessA = pseudorandomness & 3
+            pseudorandomnessB = (pseudorandomness >> 2) & 3
+            pseudorandomnessC = (pseudorandomness >> 4) & 3
+            pseudorandomnessD = (pseudorandomness >> 6) & 3
+            pseudorandomnessE = pseudorandomnessA - pseudorandomnessC
+            pseudorandomnessF = pseudorandomnessB - pseudorandomnessD
+            pseudorandomnessState = false
+          }, 30)
+        }
+
+        const turretActivateId = setInterval(function() {
+          if (turretActivateState) {
+            return
+          }
+
+          turretActivateState = true
+
+          if (document.readyState == "complete") {
+            clearInterval(turretActivateId)
+            turretActivate()
+          }
+
+          turretActivateState = false
+        }, 100)
+      }
+    </script>
+  </body>
+</html>

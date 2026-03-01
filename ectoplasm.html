@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Ectoplasm™</title>
+    <meta name="description" content="Ectoplasm™ is the entropy schema by GhostProxies that generates bits efficiently with the highest level of unpredictability.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com/ectoplasm">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+        margin: 0;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #777;
+        display: block;
+        font-size: 11px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer p {
+          margin: 0 0 9px;
+        }
+          footer p a {
+            margin-bottom: 10px;
+          }
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+        max-width: 600px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+        position: relative;
+      }
+        header a {
+          display: block;
+          width: 30px;
+        }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 51px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+      .visual {
+        min-height: 228px;
+        padding: 27px 27px 21px;
+      }
+    </style>
+  </head>
+  <body>
+    <header><a href="/"><img height="36" src="ghostproxies-logo-black.svg" width="36"></a></header>
+    <main>
+      <h1>Ectoplasm<span style="color: #777; margin-left: 1px;">™</span></h1>
+      <p>Ectoplasm™ is the entropy schema by GhostProxies that generates bits efficiently with the highest level of unpredictability.</p>
+      <p>A multi-level SLA is available through <a href="tome">Tome™</a> to evaluate and implement the following proprietary schema as an entropy source for seeding cryptographic functions.</p>
+      <h2>Example</h2>
+      <p style="margin-bottom: 21px;">The following Linux 3.10+ POSIX C program is a minimal Ectoplasm™ code example that generates 10 8-bit seeds for the purpose of demonstrating basic functionality without an SLA.</p>
+      <code>#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdio.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdlib.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;time.h&gt;</span>
+
+<span style="color: #ccc;">void</span> <span style="color: #eee;">error</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #bbb;">exit</span>(<span style="color: #fff;">EXIT_FAILURE</span>);
+}
+
+<span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">oscillate</span>(<span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">entropy</span>, <span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">oscillation</span>,
+                        <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #ccc;">time_t</span> <span style="color: #eee;">seconds</span> = <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_sec</span>;
+  <span style="color: #ccc;">long</span> <span style="color: #eee;">nanoseconds</span> = <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span>;
+  <span style="color: #ccc;">signed char</span> <span style="color: #eee;">elapsed_nanoseconds_minimum</span> = (
+    (<span style="color: #eee;">entropy</span> + <span style="color: #eee;">oscillation</span>) & <span style="color: #fff;">15</span>
+  ) + <span style="color: #fff;">100</span>;
+  <span style="color: #ccc;">int</span> <span style="color: #eee;">is_successful_clock_measurement</span> = <span style="color: #eee;">entropy</span> & <span style="color: #fff;">1</span>;
+
+  <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_sec</span> = <span style="color: #fff;">0</span>;
+  <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> = <span style="color: #eee;">elapsed_nanoseconds_minimum</span> - <span style="color: #fff;">1</span>;
+
+  <span style="color: #bbb;">while</span> (
+    (<span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> - <span style="color: #eee;">nanoseconds</span>) < <span style="color: #eee;">elapsed_nanoseconds_minimum</span> &&
+    (
+      <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_sec</span> == <span style="color: #eee;">seconds</span> ||
+      !<span style="color: #eee;">s</span>-><span style="color: #eee;">tv_sec</span>
+    )
+  ) {
+    <span style="color: #eee;">oscillation</span> *= ((<span style="color: #eee;">entropy</span> + <span style="color: #eee;">oscillation</span>) % <span style="color: #fff;">111</span>) | <span style="color: #fff;">1</span>;
+    <span style="color: #eee;">oscillation</span> /= (<span style="color: #eee;">entropy</span> + <span style="color: #eee;">oscillation</span>) | <span style="color: #fff;">1</span>;
+    <span style="color: #eee;">oscillation</span> += ((<span style="color: #eee;">entropy</span> + <span style="color: #eee;">oscillation</span>) % <span style="color: #fff;">11</span>) + <span style="color: #fff;">11</span>;
+    <span style="color: #eee;">oscillation</span> -= <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> & <span style="color: #fff;">31</span>;
+    <span style="color: #eee;">is_successful_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_TAI</span>, <span style="color: #eee;">s</span>) + <span style="color: #fff;">1</span>;
+
+    <span style="color: #bbb;">if</span> (!<span style="color: #eee;">is_successful_clock_measurement</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">is_successful_clock_measurement</span>;
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">oscillation</span>;
+}
+
+<span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">collapse</span>(<span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">oscillation</span>, <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #bbb;">return</span> (<span style="color: #eee;">oscillation</span> + <span style="color: #fff;">s</span>-><span style="color: #fff;">tv_nsec</span>) & <span style="color: #fff;">1</span>;
+}
+
+<span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">ectoplasm</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec s</span>;
+  <span style="color: #ccc;">int</span> <span style="color: #eee;">is_successful_clock_measurement</span> = <span style="color: #bbb;">clock_getres</span>(<span style="color: #fff;">CLOCK_TAI</span>, &<span style="color: #eee;">s</span>) + <span style="color: #fff;">1</span>;
+  <span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">oscillation</span> = <span style="color: #fff;">111</span>;
+  <span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">entropy</span> = <span style="color: #fff;">1</span>;
+
+  <span style="color: #bbb;">if</span> (
+    !<span style="color: #eee;">is_successful_clock_measurement</span> ||
+    <span style="color: #eee;">s</span>.<span style="color: #eee;">tv_nsec</span> != <span style="color: #fff;">1</span>
+  ) {
+    <span style="color: #eee;">error</span>();
+  }
+
+  <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">is_successful_clock_measurement</span>;
+  <span style="color: #eee;">oscillation</span> -= <span style="color: #eee;">s</span>.<span style="color: #eee;">tv_nsec</span> & <span style="color: #fff;">31</span>;
+  <span style="color: #eee;">is_successful_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_TAI</span>, &<span style="color: #eee;">s</span>) + <span style="color: #fff;">1</span>;
+
+  <span style="color: #bbb;">if</span> (!<span style="color: #eee;">is_successful_clock_measurement</span>) {
+    <span style="color: #eee;">error</span>();
+  }
+
+  <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">is_successful_clock_measurement</span>;
+
+  <span style="color: #bbb;">while</span> (!(<span style="color: #eee;">entropy</span> >> <span style="color: #fff;">7</span>)) {
+    <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">entropy</span>, <span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+    <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> << <span style="color: #fff;">1</span>) | <span style="color: #eee;">collapse</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+  }
+
+  <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">entropy</span>, <span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+  <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> << <span style="color: #fff;">1</span>) | <span style="color: #eee;">collapse</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">entropy</span>;
+}
+
+<span style="color: #ccc;">int</span> <span style="color: #bbb;">main</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">unsigned char</span> <span style="color: #eee;">i</span> = <span style="color: #fff;">0</span>;
+
+  <span style="color: #bbb;">while</span> (<span style="color: #eee;">i</span> < <span style="color: #fff;">10</span>) {
+    <span style="color: #eee;">i</span>++;
+    <span style="color: #bbb;">printf</span>(<span style="color: #fff;">"Result %u is %u.\n"</span>, <span style="color: #eee;">i</span>, <span style="color: #eee;">ectoplasm</span>());
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #fff;">0</span>;
+}</code>
+      <h2 style="margin-top: 21px;">Quantum Alignment</h2>
+      <p>Ectoplasm™ uses classical computing to generate process-isolated entropy pools that stabilize the desirable entropic properties of quantum mechanics.</p>
+      <p><code style="margin-left: 0;">oscillate</code> mimics a qubit in superposition and <code>collapse</code> mimics a collapsed qubit.</p>
+      <p><code style="margin-left: 0;">ectoplasm</code> returns the concatenated result of each <code>collapse</code> entropy bit.</p>
+      <h2>Randomness</h2>
+      <p>Ectoplasm™ enables fine-grained control of entropy pool bounds on classical computers without either qubit phenomena inconsistencies or round-trip quantum computer errors.</p>
+      <p>Unpredictability is controlled by deterministic procedures that create non-deterministic time measurements from CPU oscillations with fewer failure points than QRNG procedures.</p>
+      <p>The stability factor relies on defining the oscillation set procedures carefully to elapse both a consistent lower-precision minimum time and a varying higher-precision average time.</p>
+      <p>After processing an oscillation set, Ectoplasm™ truncates the smallest fraction of a system-defined nanosecond Epoch time measurement as 1 bit of the highest-quality entropy.</p>
+      <h2>Visual</h2>
+      <p style="margin-bottom: 21px;">The following animation is a step-by-step portrayal that simulates Ectoplasm™ quantum alignment for visual demonstration purposes.</p>
+      <code class="visual"></code>
+      <h2 style="margin-top: 21px;">Considerations</h2>
+      <p>SLA-bound Ectoplasm™ implementations consider the following factors to avoid polluting entropy pools.</p>
+      <p>1. Y2K38 could produce integer overflows when unpatched system clock functions require 32-bit, signed integers.</p>
+      <p>2. Each clock measurement requires a nanosecond-precision, system-wide clock that has both fixed-interval time continuity and process-level immutability.</p>
+      <p>3. A clock that both specifies process-level immutability and changes either nanosecond precision or fixed-interval time continuity is beyond the scope of implementation.</p>
+      <p>4. Anomalous system clock failures are handled by aborting with <code>EXIT_FAILURE</code>, although other fallbacks may be preferred, such as mixing in ASLR-based addresses and cloud APIs.</p>
+      <p>5. <code style="margin-left: 0;">oscillate</code> should be validated with sequential timestamp differences to verify that each oscillation set elapses a minimum amount of varying nanoseconds.</p>
+      <p>6. Deterministic conditioning that guarantees the removal of mathematical biases in sequential <code>ectoplasm</code> output is omitted.</p>
+      <p>7. Code must be structured to support compiler optimization.</p>
+      <p>8. <code style="margin-left: 0;">oscillate</code> procedures must be evaluated and tuned for CPU time variances, clock drift, frequency skew and process speed requirements.</p>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto: williamstaffordparsons@proton.me">Contact</a><a href="privacy">Privacy</a></p>
+      <small>Copyright 2013-2026 GhostProxies</small>
+      <small>All unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small style="word-break: break-all;">BTC: <a href="https://proton.me/wallet/explorer/address/bc1q8fwh6npytl2ceer8msgmc7fw4hjnynv4f274cp">bc1q8fwh6npytl2ceer8msgmc7fw4hjnynv4f274cp</a></small>
+    </footer>
+    <script>
+      onload = function() {
+        let pseudorandomness = Date.now() & 65535
+        let simulatedEntropy
+        let simulatedEntropyOutput
+        let i
+        let j
+        let visualState = false
+        let oscillateState = false
+        let collapseState = false
+        const visualElement = document.querySelector(".visual")
+
+        setInterval(function() {
+          if (visualState) {
+            return
+          }
+
+          visualState = true
+          visualElement.innerHTML = ""
+          simulatedEntropy = 0
+          simulatedEntropyOutput = ""
+          i = 0
+
+          const oscillateId = setInterval(function() {
+            if (oscillateState) {
+              return
+            }
+
+            oscillateState = true
+
+            const oscillateElement = document.createElement("span")
+
+            visualElement.appendChild(oscillateElement)
+            j = 0
+
+            const collapseId = setInterval(function() {
+              if (collapseState) {
+                return
+              }
+
+              collapseState = true
+
+              if (j < 8) {
+                pseudorandomness = ((pseudorandomness * 111) + 1111) % 100000000
+                oscillateElement.innerHTML = (
+                  ((Date.now() & 65535) >> 3).toString().padStart(5, 0)
+                    + "<span style=\"color: #777;\">[...]</span>"
+                    + ((pseudorandomness >> 8) % 100000).toString().padStart(5, 0)
+                    + "\n"
+                )
+                j++
+                collapseState = false
+                return
+              }
+
+              pseudorandomness = ((pseudorandomness * 111) + 1111) % 100000000
+              simulatedEntropy = ((pseudorandomness >> 8) + (Date.now() & 65535)) % 100000
+              simulatedEntropyOutput += simulatedEntropy & 1
+              oscillateElement.innerHTML = (
+                ((Date.now() & 65535) >> 3).toString().padStart(5, 0)
+                  + "<span style=\"color: #777;\">[...]</span>"
+                  + simulatedEntropy.toString().padStart(5, 0)
+                  + " & 1 == <span style=\"color: #ccc;\">"
+                  + (simulatedEntropy & 1)
+                  + "</span>\n"
+              )
+              clearInterval(collapseId)
+              oscillateState = false
+              collapseState = false
+              i++
+
+              if (i > 7) {
+                clearInterval(oscillateId)
+
+                const simulatedEntropyElement = document.createElement("span")
+
+                simulatedEntropyElement.innerHTML = (
+                  "\n<span style=\"color: #ccc;\">0b"
+                    + simulatedEntropyOutput
+                    + "</span> == <span style=\"color: #fff;\">0d"
+                    + parseInt(simulatedEntropyOutput, 2)
+                    + "</span>"
+                )
+                visualElement.appendChild(simulatedEntropyElement)
+
+                setTimeout(function() {
+                  visualElement.innerHTML = ""
+                  visualState = false
+                }, 3000)
+              }
+            }, 30)
+          }, 100)
+        }, 1000)
+      }
+    </script>
+  </body>
+</html>
