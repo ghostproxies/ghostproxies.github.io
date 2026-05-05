@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Nightmare™</title>
+    <meta name="description" content="Nightmare™ is the pseudorandomness hyper-efficiency R&D retainer for application-specific results beyond GhostProxies open source.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com/nightmare">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      [opacity="0"] {opacity: 0;}
+      [opacity="1"] {opacity: 0.1;}
+      [opacity="2"] {opacity: 0.2;}
+      [opacity="3"] {opacity: 0.3;}
+      [opacity="4"] {opacity: 0.4;}
+      [opacity="5"] {opacity: 0.5;}
+      [opacity="6"] {opacity: 0.6;}
+      [opacity="7"] {opacity: 0.7;}
+      [opacity="8"] {opacity: 0.8;}
+      [opacity="9"] {opacity: 0.9;}
+      body,
+      html {
+        background-color: #333;
+        margin: 0;
+      }
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+        margin: 0;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #888;
+        display: block;
+        font-size: 11px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer p {
+          margin: 0 0 9px;
+        }
+          footer p a {
+            margin-bottom: 10px;
+          }
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+        max-width: 555px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+        position: relative;
+      }
+        header a {
+          display: block;
+          width: 30px;
+        }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 58px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+      .bounds {
+        height: 332px;
+        left: -6px;
+        top: -6px;
+        width: 282px;
+      }
+      .bounds,
+      .bounds-container {
+        background-color: #000;
+      }
+      .bounds-container {
+        border-radius: 5px;
+        height: 320px;
+        overflow: hidden;
+        position: relative;
+        width: 270px;
+      }
+      .element {
+        position: absolute;
+      }
+      .enemy {
+        background-color: #000;
+        transition-duration: 0.2s;
+        transition-property: left, top;
+        transition-timing-function: steps(4, jump-none);
+        z-index: 5;
+      }
+        .enemy[flinch="0"] {border-bottom-left-radius: 15px;}
+        .enemy[flinch="1"] {border-bottom-right-radius: 15px;}
+        .enemy[flinch="2"] {border-top-left-radius: 15px;}
+        .enemy[flinch="3"] {border-top-right-radius: 15px;}
+        .enemy:before {
+          content: "";
+          height: 8px;
+          left: 6px;
+          position: absolute;
+          top: 6px;
+          width: 8px;
+        }
+        .enemy:before,
+        .pieces-large div,
+        .pieces-small div,
+        .weapon {
+          border-radius: 8px;
+        }
+        .enemy.burst {
+          background-color: transparent;
+          border-radius: 90px;
+          height: 90px;
+          transition-duration: 0.14s;
+          transition-property: border-color, height, left, top, width;
+          width: 90px;
+          z-index: 3;
+        }
+          .enemy.burst:before {
+            height: 0;
+            width: 0;
+          }
+        .enemy.strong {
+          border-color: #bbb;
+        }
+          .enemy.strong:before {
+            background-color: #868686;
+          }
+        .enemy.weak {
+          border-color: #888;
+        }
+          .enemy.weak:before {
+            background-color: #393939;
+          }
+      .enemy,
+      .player {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: 20px;
+        width: 20px;
+      }
+      .enemy,
+      .player,
+      .weapon,
+      .weapon-muzzle-flash,
+      .weapon-projectile {
+        border-style: solid;
+        border-width: 4px;
+      }
+        .enemy.hit,
+        .player,
+        .weapon,
+        .weapon-muzzle-flash {
+          z-index: 6;
+        }
+        .enemy.hit,
+        .player,
+        .weapon {
+          border-color: #fff;
+          z-index: 6;
+        }
+          .enemy.hit.strong:before {
+            background-color: #fff;
+          }
+          .enemy.hit.weak:before {
+            background-color: #aaa;
+          }
+      .pieces-large {
+        z-index: 3;
+      }
+        .pieces-large div {
+          height: 4px;
+        }
+        .pieces-large div,
+        .pieces-small div {
+          background-color: #000;
+          position: absolute;
+        }
+      .pieces-large-0 .pieces-large-0 {left: 18px; top: 38px; width: 4px;}
+      .pieces-large-0 .pieces-large-1 {left: 64px; top: 48px; transform: rotate(154deg); width: 8px;}
+      .pieces-large-0 .pieces-large-2 {left: 46px; top: -22px; width: 4px;}
+      .pieces-large-0 .pieces-large-3 {left: -58px; top: -22px; transform: rotate(175deg); width: 10px;}
+      .pieces-large-0 .pieces-large-4 {left: -58px; top: -30px; width: 4px;}
+      .pieces-large-0 .pieces-large-5 {left: -40px; top: 22px; transform: rotate(28deg); width: 6px;}
+      .pieces-large-0 .pieces-large-6 {left: -8px; top: 20px; width: 4px;}
+      .pieces-large-0 .pieces-large-7 {left: 35px; top: 29px; width: 4px;}
+      .pieces-large-0 .pieces-large-8 {left: -87px; top: 30px; width: 4px;}
+      .pieces-large-1 .pieces-large-0 {left: 65px; top: 22px; width: 4px;}
+      .pieces-large-1 .pieces-large-1 {left: 39px; top: 62px; transform: rotate(113deg); width: 8px;}
+      .pieces-large-1 .pieces-large-2 {left: 24px; top: 12px; width: 4px;}
+      .pieces-large-1 .pieces-large-3 {left: 55px; top: -47px; transform: rotate(42deg); width: 10px;}
+      .pieces-large-1 .pieces-large-4 {left: 81px; top: -16px; width: 4px;}
+      .pieces-large-1 .pieces-large-5 {left: -31px; top: -18px; transform: rotate(113deg); width: 6px;}
+      .pieces-large-1 .pieces-large-6 {left: 20px; top: 74px; transform: rotate(154deg); width: 8px;}
+      .pieces-large-1 .pieces-large-7 {left: 53px; top: -21px; width: 4px;}
+      .pieces-large-1 .pieces-large-8 {left: -29px; top: -11px; transform: rotate(175deg); width: 10px;}
+      .pieces-large-2 .pieces-large-0 {left: -2px; top: 8px; width: 4px;}
+      .pieces-large-2 .pieces-large-1 {left: 1px; top: 11px; transform: rotate(172deg); width: 8px;}
+      .pieces-large-2 .pieces-large-2 {left: -62px; top: 10px; width: 4px;}
+      .pieces-large-2 .pieces-large-3 {left: 21px; top: 1px; transform: rotate(93deg); width: 10px;}
+      .pieces-large-2 .pieces-large-4 {left: 20px; top: 4px; width: 4px;}
+      .pieces-large-2 .pieces-large-5 {left: 14px; top: 16px; transform: rotate(158deg); width: 6px;}
+      .pieces-large-2 .pieces-large-6 {left: 19px; top: 42px; transform: rotate(113deg); width: 8px;}
+      .pieces-large-2 .pieces-large-7 {left: 12px; top: 26px; width: 4px;}
+      .pieces-large-2 .pieces-large-8 {left: 15px; top: -17px; transform: rotate(42deg); width: 10px;}
+      .pieces-large-3 .pieces-large-0 {left: 16px; top: -6px; width: 4px;}
+      .pieces-large-3 .pieces-large-1 {left: 19px; top: 18px; transform: rotate(112deg); width: 8px;}
+      .pieces-large-3 .pieces-large-2 {left: -24px; top: -25px; width: 4px;}
+      .pieces-large-3 .pieces-large-3 {left: 22px; top: -55px; transform: rotate(77deg); width: 10px;}
+      .pieces-large-3 .pieces-large-4 {left: 88px; top: -21px; width: 4px;}
+      .pieces-large-3 .pieces-large-5 {left: -17px; top: -16px; transform: rotate(155deg); width: 6px;}
+      .pieces-large-3 .pieces-large-6 {left: 10px; top: 11px; transform: rotate(172deg); width: 8px;}
+      .pieces-large-3 .pieces-large-7 {left: -2px; top: 10px; width: 4px;}
+      .pieces-large-3 .pieces-large-8 {left: 21px; top: 1px; transform: rotate(93deg); width: 10px;}
+      .pieces-large-4 .pieces-large-0 {left: 10px; top: -15px; width: 4px;}
+      .pieces-large-4 .pieces-large-1 {left: 23px; top: 23px; transform: rotate(64deg); width: 8px;}
+      .pieces-large-4 .pieces-large-2 {left: 24px; top: 77px; width: 4px;}
+      .pieces-large-4 .pieces-large-3 {left: 22px; top: -28px; transform: rotate(102deg); width: 10px;}
+      .pieces-large-4 .pieces-large-4 {left: 79px; top: 16px; width: 4px;}
+      .pieces-large-4 .pieces-large-5 {left: 19px; top: -8px; transform: rotate(132deg); width: 6px;}
+      .pieces-large-4 .pieces-large-6 {left: 16px; top: -66px; width: 4px;}
+      .pieces-large-4 .pieces-large-7 {left: 29px; top: 58px; transform: rotate(112deg); width: 8px;}
+      .pieces-large-4 .pieces-large-8 {left: -24px; top: -45px; width: 4px;}
+      .pieces-large-5 .pieces-large-0 {left: 27px; top: -9px; width: 4px;}
+      .pieces-large-5 .pieces-large-1 {left: 2px; top: -8px; transform: rotate(139deg); width: 8px;}
+      .pieces-large-5 .pieces-large-2 {left: 16px; top: 22px; width: 4px;}
+      .pieces-large-5 .pieces-large-3 {left: -11px; top: -6px; transform: rotate(138deg); width: 10px;}
+      .pieces-large-5 .pieces-large-4 {left: -13px; top: -46px; width: 4px;}
+      .pieces-large-5 .pieces-large-5 {left: 9px; top: -16px; transform: rotate(80deg); width: 6px;}
+      .pieces-large-5 .pieces-large-6 {left: 23px; top: 23px; transform: rotate(64deg); width: 8px;}
+      .pieces-large-5 .pieces-large-7 {left: 24px; top: 7px; width: 4px;}
+      .pieces-large-5 .pieces-large-8 {left: 22px; top: -28px; transform: rotate(102deg); width: 10px;}
+      .pieces-large-6 .pieces-large-0 {left: 25px; top: -25px; width: 4px;}
+      .pieces-large-6 .pieces-large-1 {left: -5px; top: 26px; transform: rotate(4deg); width: 8px;}
+      .pieces-large-6 .pieces-large-2 {left: 7px; top: -72px; width: 4px;}
+      .pieces-large-6 .pieces-large-3 {left: -7px; top: -19px; transform: rotate(109deg); width: 10px;}
+      .pieces-large-6 .pieces-large-4 {left: -16px; top: -11px; width: 4px;}
+      .pieces-large-6 .pieces-large-5 {left: 49px; top: -11px; transform: rotate(25deg); width: 6px;}
+      .pieces-large-6 .pieces-large-6 {left: 56px; top: 72px; width: 4px;}
+      .pieces-large-6 .pieces-large-7 {left: -33px; top: -16px; width: 4px;}
+      .pieces-large-6 .pieces-large-8 {left: 49px; top: -16px; transform: rotate(80deg); width: 6px;}
+      .pieces-large-7 .pieces-large-0 {left: 22px; top: 72px; width: 4px;}
+      .pieces-large-7 .pieces-large-1 {left: -51px; top: 26px; width: 4px;}
+      .pieces-large-7 .pieces-large-2 {left: -14px; top: 25px; width: 4px;}
+      .pieces-large-7 .pieces-large-3 {left: -16px; top: 21px; width: 4px;}
+      .pieces-large-7 .pieces-large-4 {left: -10px; top: -26px; width: 4px;}
+      .pieces-large-7 .pieces-large-5 {left: 13px; top: -5px; width: 4px;}
+      .pieces-large-7 .pieces-large-6 {left: -85px; top: 26px; width: 4px;}
+      .pieces-large-7 .pieces-large-7 {left: -47px; top: -19px; width: 4px;}
+      .pieces-large-7 .pieces-large-8 {left: 19px; top: -11px; width: 4px;}
+      .pieces-large-8 .pieces-large-0 {left: -74px; top: 17px; width: 4px;}
+      .pieces-large-8 .pieces-large-1 {left: 52px; top: 25px; transform: rotate(48deg); width: 8px;}
+      .pieces-large-8 .pieces-large-2 {left: 15px; top: 16px; width: 4px;}
+      .pieces-large-8 .pieces-large-3 {left: 20px; top: 2px; transform: rotate(96deg); width: 10px;}
+      .pieces-large-8 .pieces-large-4 {left: 77px; top: -12px; width: 4px;}
+      .pieces-large-8 .pieces-large-5 {left: 39px; top: -16px; transform: rotate(44deg); width: 6px;}
+      .pieces-large-8 .pieces-large-6 {left: 22px; top: 12px; width: 4px;}
+      .pieces-large-8 .pieces-large-7 {left: -21px; top: 66px; transform: rotate(95deg); width: 8px;}
+      .pieces-large-8 .pieces-large-8 {left: -14px; top: 15px; width: 4px;}
+      .pieces-large-9 .pieces-large-0 {left: 26px; top: 62px; width: 4px;}
+      .pieces-large-9 .pieces-large-1 {left: 25px; top: -11px; transform: rotate(69deg); width: 8px;}
+      .pieces-large-9 .pieces-large-2 {left: -11px; top: -27px; width: 4px;}
+      .pieces-large-9 .pieces-large-3 {left: -27px; top: 5px; transform: rotate(129deg); width: 10px;}
+      .pieces-large-9 .pieces-large-4 {left: 15px; top: -29px; width: 4px;}
+      .pieces-large-9 .pieces-large-5 {left: -6px; top: 28px; transform: rotate(159deg); width: 6px;}
+      .pieces-large-9 .pieces-large-6 {left: -4px; top: 8px; width: 4px;}
+      .pieces-large-9 .pieces-large-7 {left: 12px; top: 25px; transform: rotate(48deg); width: 8px;}
+      .pieces-large-9 .pieces-large-8 {left: 15px; top: 16px; width: 4px;}
+      .pieces-large-10 .pieces-large-0 {left: -18px; top: -42px; width: 4px;}
+      .pieces-large-10 .pieces-large-1 {left: -57px; top: -15px; transform: rotate(105deg); width: 8px;}
+      .pieces-large-10 .pieces-large-2 {left: 9px; top: 47px; width: 4px;}
+      .pieces-large-10 .pieces-large-3 {left: 10px; top: 18px; transform: rotate(138deg); width: 10px;}
+      .pieces-large-10 .pieces-large-4 {left: 13px; top: -15px; width: 4px;}
+      .pieces-large-10 .pieces-large-5 {left: 2px; top: -10px; transform: rotate(172deg); width: 6px;}
+      .pieces-large-10 .pieces-large-6 {left: 26px; top: 82px; width: 4px;}
+      .pieces-large-10 .pieces-large-7 {left: -11px; top: -27px; width: 4px;}
+      .pieces-large-10 .pieces-large-8 {left: -27px; top: 45px; transform: rotate(129deg); width: 10px;}
+      .pieces-large-11 .pieces-large-0 {left: 14px; top: -3px; width: 4px;}
+      .pieces-large-11 .pieces-large-1 {left: 8px; top: 10px; transform: rotate(35deg); width: 8px;}
+      .pieces-large-11 .pieces-large-2 {left: 25px; top: 17px; width: 4px;}
+      .pieces-large-11 .pieces-large-3 {left: -28px; top: 19px; transform: rotate(4deg); width: 10px;}
+      .pieces-large-11 .pieces-large-4 {left: -10px; top: -28px; width: 4px;}
+      .pieces-large-11 .pieces-large-5 {left: -17px; top: -12px; transform: rotate(106deg); width: 6px;}
+      .pieces-large-11 .pieces-large-6 {left: 34px; top: 48px; transform: rotate(138deg); width: 10px;}
+      .pieces-large-11 .pieces-large-7 {left: 13px; top: -5px; width: 4px;}
+      .pieces-large-11 .pieces-large-8 {left: 2px; top: -10px; transform: rotate(172deg); width: 6px;}
+      .pieces-large-12 .pieces-large-0 {left: -18px; top: -13px; width: 4px;}
+      .pieces-large-12 .pieces-large-1 {left: -13px; top: -10px; transform: rotate(116deg); width: 8px;}
+      .pieces-large-12 .pieces-large-2 {left: -20px; top: 14px; width: 4px;}
+      .pieces-large-12 .pieces-large-3 {left: -57px; top: 20px; transform: rotate(58deg); width: 10px;}
+      .pieces-large-12 .pieces-large-4 {left: 16px; top: 42px; width: 4px;}
+      .pieces-large-12 .pieces-large-5 {left: 64px; top: 14px; transform: rotate(59deg); width: 6px;}
+      .pieces-large-12 .pieces-large-6 {left: 18px; top: 55px; transform: rotate(35deg); width: 8px;}
+      .pieces-large-12 .pieces-large-7 {left: 25px; top: 17px; width: 4px;}
+      .pieces-large-12 .pieces-large-8 {left: -28px; top: 19px; transform: rotate(4deg); width: 10px;}
+      .pieces-large-13 .pieces-large-0 {left: -18px; top: -27px; width: 4px;}
+      .pieces-large-13 .pieces-large-1 {left: -15px; top: 26px; transform: rotate(78deg); width: 8px;}
+      .pieces-large-13 .pieces-large-2 {left: 75px; top: -13px; width: 4px;}
+      .pieces-large-13 .pieces-large-3 {left: -85px; top: -29px; transform: rotate(108deg); width: 10px;}
+      .pieces-large-13 .pieces-large-4 {left: 74px; top: 74px; width: 4px;}
+      .pieces-large-13 .pieces-large-5 {left: 63px; top: -12px; transform: rotate(139deg); width: 6px;}
+      .pieces-large-13 .pieces-large-6 {left: -118px; top: -73px; width: 4px;}
+      .pieces-large-13 .pieces-large-7 {left: -20px; top: 54px; width: 4px;}
+      .pieces-large-13 .pieces-large-8 {left: 16px; top: 12px; width: 4px;}
+      .pieces-large-14 .pieces-large-0 {left: 35px; top: -27px; width: 4px;}
+      .pieces-large-14 .pieces-large-1 {left: -13px; top: -32px; transform: rotate(91deg); width: 8px;}
+      .pieces-large-14 .pieces-large-2 {left: 76px; top: 29px; width: 4px;}
+      .pieces-large-14 .pieces-large-3 {left: 28px; top: 57px; transform: rotate(174deg); width: 10px;}
+      .pieces-large-14 .pieces-large-4 {left: 89px; top: 60px; width: 4px;}
+      .pieces-large-14 .pieces-large-5 {left: -12px; top: -58px; transform: rotate(143deg); width: 6px;}
+      .pieces-large-14 .pieces-large-6 {left: -18px; top: -27px; width: 4px;}
+      .pieces-large-14 .pieces-large-7 {left: -15px; top: 26px; transform: rotate(78deg); width: 8px;}
+      .pieces-large-14 .pieces-large-8 {left: 5px; top: -53px; width: 4px;}
+      .pieces-large-15 .pieces-large-0 {left: 25px; top: 54px; width: 4px;}
+      .pieces-large-15 .pieces-large-1 {left: -45px; top: 5px; width: 4px;}
+      .pieces-large-15 .pieces-large-2 {left: -36px; top: 41px; width: 4px;}
+      .pieces-large-15 .pieces-large-3 {left: 3px; top: -82px; width: 4px;}
+      .pieces-large-15 .pieces-large-4 {left: 17px; top: -66px; width: 4px;}
+      .pieces-large-15 .pieces-large-5 {left: -61px; top: -13px; width: 4px;}
+      .pieces-large-15 .pieces-large-6 {left: -23px; top: -72px; width: 4px;}
+      .pieces-large-15 .pieces-large-7 {left: 28px; top: 47px; width: 4px;}
+      .pieces-large-15 .pieces-large-8 {left: -68px; top: -48px; width: 4px;}
+      .pieces-large-hidden div,
+      .pieces-small-hidden div {
+        left: 0;
+        top: 0;
+      }
+      .pieces-large-hidden div {
+        background-color: #fff;
+      }
+      .pieces-large-transition div {
+        transition-property: background-color, left, top;
+        transition-timing-function: steps(13, jump-start);
+      }
+      .pieces-large-transition-0 div {
+        transition-duration: 2.5s, 0.18s, 0.18s;
+      }
+      .pieces-large-transition-1 div {
+        transition-duration: 2.5s, 0.20s, 0.20s;
+      }
+      .pieces-large-transition-2 div {
+        transition-duration: 2.5s, 0.24s, 0.24s;
+      }
+      .pieces-large-transition-3 div {
+        transition-duration: 2.5s, 0.26s, 0.26s;
+      }
+      .pieces-small {
+        z-index: 2;
+      }
+      .pieces-small-0 .pieces-small-0 {height: 4px; left: 9px; top: 19px; width: 4px;}
+      .pieces-small-0 .pieces-small-1 {height: 4px; left: 2px; top: 4px; width: 8px;}
+      .pieces-small-0 .pieces-small-2 {height: 4px; left: 23px; top: -11px; width: 4px;}
+      .pieces-small-1 .pieces-small-0 {height: 4px; left: 35px; top: 1px; width: 4px;}
+      .pieces-small-1 .pieces-small-1 {height: 8px; left: 39px; top: 22px; width: 8px;}
+      .pieces-small-1 .pieces-small-2 {height: 4px; left: 12px; top: 56px; width: 4px;}
+      .pieces-small-2 .pieces-small-0 {height: 4px; left: -2px; top: 8px; width: 4px;}
+      .pieces-small-2 .pieces-small-1 {height: 4px; left: 10px; top: 11px; width: 8px;}
+      .pieces-small-2 .pieces-small-2 {height: 4px; left: -2px; top: 10px; width: 4px;}
+      .pieces-small-3 .pieces-small-0 {height: 4px; left: 16px; top: -6px; width: 4px;}
+      .pieces-small-3 .pieces-small-1 {height: 8px; left: 19px; top: 18px; width: 8px;}
+      .pieces-small-3 .pieces-small-2 {height: 4px; left: -24px; top: -25px; width: 4px;}
+      .pieces-small-4 .pieces-small-0 {height: 4px; left: 10px; top: -15px; width: 4px;}
+      .pieces-small-4 .pieces-small-1 {height: 4px; left: 23px; top: 23px; width: 8px;}
+      .pieces-small-4 .pieces-small-2 {height: 4px; left: 24px; top: 7px; width: 4px;}
+      .pieces-small-5 .pieces-small-0 {height: 4px; left: 27px; top: -9px; width: 4px;}
+      .pieces-small-5 .pieces-small-1 {height: 4px; left: 2px; top: -8px; width: 8px;}
+      .pieces-small-5 .pieces-small-2 {height: 4px; left: 16px; top: 22px; width: 4px;}
+      .pieces-small-6 .pieces-small-0 {height: 4px; left: 25px; top: -25px; width: 4px;}
+      .pieces-small-6 .pieces-small-1 {height: 8px; left: -5px; top: 26px; width: 8px;}
+      .pieces-small-6 .pieces-small-2 {height: 4px; left: 7px; top: -72px; width: 4px;}
+      .pieces-small-7 .pieces-small-0 {height: 4px; left: 22px; top: 2px; width: 4px;}
+      .pieces-small-7 .pieces-small-1 {height: 8px; left: -51px; top: 26px; width: 8px;}
+      .pieces-small-7 .pieces-small-2 {height: 4px; left: -14px; top: 25px; width: 4px;}
+      .pieces-small-8 .pieces-small-0 {height: 4px; left: -4px; top: 17px; width: 4px;}
+      .pieces-small-8 .pieces-small-1 {height: 8px; left: 52px; top: 25px; width: 8px;}
+      .pieces-small-8 .pieces-small-2 {height: 4px; left: 15px; top: 16px; width: 4px;}
+      .pieces-small-9 .pieces-small-0 {height: 4px; left: 26px; top: 2px; width: 4px;}
+      .pieces-small-9 .pieces-small-1 {height: 8px; left: 25px; top: -11px; width: 8px;}
+      .pieces-small-9 .pieces-small-2 {height: 4px; left: -11px; top: -27px; width: 4px;}
+      .pieces-small-10 .pieces-small-0 {height: 4px; left: -18px; top: -42px; width: 4px;}
+      .pieces-small-10 .pieces-small-1 {height: 8px; left: -27px; top: -15px; width: 8px;}
+      .pieces-small-10 .pieces-small-2 {height: 4px; left: 9px; top: 17px; width: 4px;}
+      .pieces-small-11 .pieces-small-0 {height: 4px; left: 14px; top: -3px; width: 4px;}
+      .pieces-small-11 .pieces-small-1 {height: 4px; left: 8px; top: 10px; width: 8px;}
+      .pieces-small-11 .pieces-small-2 {height: 4px; left: 25px; top: 17px; width: 4px;}
+      .pieces-small-12 .pieces-small-0 {height: 4px; left: -18px; top: -13px; width: 4px;}
+      .pieces-small-12 .pieces-small-1 {height: 8px; left: -13px; top: -10px; width: 8px;}
+      .pieces-small-12 .pieces-small-2 {height: 4px; left: -20px; top: 4px; width: 4px;}
+      .pieces-small-13 .pieces-small-0 {height: 4px; left: -18px; top: -27px; width: 4px;}
+      .pieces-small-13 .pieces-small-1 {height: 4px; left: -15px; top: 26px; width: 8px;}
+      .pieces-small-13 .pieces-small-2 {height: 4px; left: 5px; top: -13px; width: 4px;}
+      .pieces-small-14 .pieces-small-0 {height: 4px; left: 15px; top: -27px; width: 4px;}
+      .pieces-small-14 .pieces-small-1 {height: 8px; left: -23px; top: -2px; width: 8px;}
+      .pieces-small-14 .pieces-small-2 {height: 4px; left: 26px; top: 29px; width: 4px;}
+      .pieces-small-15 .pieces-small-0 {height: 4px; left: 5px; top: 54px; width: 4px;}
+      .pieces-small-15 .pieces-small-1 {height: 8px; left: -15px; top: 5px; width: 8px;}
+      .pieces-small-15 .pieces-small-2 {height: 4px; left: -16px; top: 11px; width: 4px;}
+      .pieces-small-hidden div {
+        background-color: #fff;
+      }
+      .pieces-small-transition div {
+        transition-duration: 0.7s, 0.3s, 0.3s;
+        transition-property: background-color, left, top;
+        transition-timing-function: steps(5, jump-end);
+      }
+      .player,
+      .weapon {
+        background-color: #000;
+        transition-duration: 0.05s, 0.05s, 0.04s, 0.04s;
+        transition-property: left, top, margin-left, margin-top;
+        transition-timing-function: steps(3, jump-none);
+        z-index: 6;
+      }
+      .shake-large-0 {margin-top: -7px !important;}
+      .shake-large-1 {margin-top: 6px !important;}
+      .shake-large-2 {margin-left: -6px !important;}
+      .shake-large-3 {margin-left: 7px !important;}
+      .shake-medium-0 {margin-top: -3px !important;}
+      .shake-medium-1 {margin-top: 2px !important;}
+      .shake-medium-2 {margin-left: -2px !important;}
+      .shake-medium-3 {margin-left: 3px !important;}
+      .shake-small-0 {margin-top: -2px;}
+      .shake-small-1 {margin-top: 1px;}
+      .shake-small-2 {margin-left: -1px;}
+      .shake-small-3 {margin-left: 2px;}
+      .weapon {
+        height: 4px;
+        left: -12px;
+        width: 4px;
+      }
+      .weapon-muzzle-flash {
+        border-color: #777;
+        border-radius: 50px;
+        height: 0;
+        width: 0;
+        z-index: 5;
+      }
+      .weapon-projectile {
+        background-color: #555;
+        border-color: #000;
+        border-radius: 8px;
+        height: 8px;
+        margin-left: -4px;
+        margin-top: -4px;
+        width: 8px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <header><a href="/"><img height="36" src="ghostproxies-logo-black.svg" width="36"></a></header>
+    <main>
+      <h1>Nightmare<span style="margin-left: 1px;">™</span></h1>
+      <p>Nightmare™ is the pseudorandomness hyper-efficiency R&D retainer for application-specific results beyond GhostProxies <a href="https://github.com/ghostproxies">open source</a>.</p>
+      <p>R&D <a href="mailto:william@ghostproxies.com">bid inquiries</a> are considered to create proprietary components that have mathematical precision for unprecedented efficiency in application-specific cases.</p>
+      <p>Nightmare™ is "pay for results only", spanning far into the abyss to exceed any result from engineers, hobbyists, professors, researchers, scientists and state-of-the-art AI.</p>
+      <p>Nightmare™ covers all aspects of pseudorandomness in practical computing (including CSPRNGs, PRNGs, checksums, data compression, encryption and hash maps).</p>
+      <p>For example, the following case studies apply the almost-frightening capabilities of Nightmare™ to create algorithms that are tuned for application-specific optimality.</p>
+      <h2>Case Study 1</h2>
+      <p>A client demands an HTML demonstration to prove application-specific utility of pseudorandomness that fails a majority of statistical tests in exchange for faster speed.</p>
+      <p style="margin-bottom: 21px;">GhostProxies supplies the following gameplay loop and satisfies client demands to consider using "cursed" pseudorandomness for efficient game scripting effects.</p>
+      <div class="bounds-container">
+        <div class="bounds element"></div>
+      </div>
+      <h2 style="margin-top: 21px;">Case Study 2</h2>
+      <p>A client demands the fastest non-cryptographic C# PRNG (for 64-bit architecture) that has 8 bits of output (for each <code>Next</code> result) and excellent statistical test results.</p>
+      <p>Furthermore, the client application doesn't require <a href="https://github.com/ghostproxies/pulsefield">PulseField™</a> independent parallel sequences or reseeding during runtime.</p>
+      <p style="margin-bottom: 21px;">GhostProxies supplies <code>Nightmare8</code> and satisfies client demands to increase throughput in a long-running queue processing system that shuffles array remainders.</p>
+      <code><span style="color: #bbb;">public class</span> <span style="color: #eee;">Nightmare8</span> {
+  <span style="color: #bbb;">public</span> <span style="color: #ccc;">ulong</span> <span style="color: #eee;">a</span>;
+  <span style="color: #bbb;">public</span> <span style="color: #ccc;">ulong</span> <span style="color: #eee;">b</span>;
+
+  <span style="color: #bbb;">public</span> <span style="color: #ccc;">byte</span> <span style="color: #eee;">Next</span>() {
+    <span style="color: #eee;">a</span> += <span style="color: #fff;">1111111111</span>;
+    <span style="color: #eee;">b</span> += (<span style="color: #eee;">b</span> &gt;&gt; <span style="color: #fff;">8</span>) + <span style="color: #eee;">a</span>;
+    <span style="color: #bbb;">return</span> (<span style="color: #ccc;">byte</span>)<span style="color: #eee;">b</span>;
+  }
+}</code>
+      <p style="margin-top: 21px;">The <code>Next</code> function modifies the state in a <code>Nightmare8</code> instance to generate a pseudorandom <code>byte</code> integer as the return value.</p>
+      <p>Each state variable (<code>a</code> and <code>b</code>) in each <code>Nightmare8</code> instance must be seeded.</p>
+      <p style="margin-top: 21px;"><code style="margin-left: 0;">Nightmare8</code> is licensed with the BSD-3-Clause license (with GhostProxies as the copyright holder name).</p>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto:william@ghostproxies.com">Contact</a><a href="privacy">Privacy</a></p>
+      <small>Copyright 2013-2026 GhostProxies</small>
+      <small>Unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small>GhostProxies is reluctantly a simulation of a successful commercial business (that isn't enabled to charge paying clients) with restricted economic participation as a result of technical issues with financial institutions (including a bad credit score and outstanding debt to tax authorities). Therefore, GhostProxies product pricing may be subject to change after the aformentioned issues are resolved.</small>
+      <small>GhostProxies is proudly made in the United States of America.</small>
+    </footer>
+    <script type="text/javascript">
+      "use strict"
+
+      let enemySpawnId = 0
+      let eventsWeaponUseState = false
+      let piecesLargeElementSelector = Date.now() & 15
+      let piecesSmallElementSelector = piecesLargeElementSelector
+      let piecesSmallElementsCount = 5
+      let pseudorandomness = Date.now() & 65535
+      let pseudorandomnessA = 0
+      let pseudorandomnessB = 0
+      let pseudorandomnessC = 0
+      let pseudorandomnessD = 0
+      let pseudorandomnessE = 0
+      let pseudorandomnessF = 0
+      let weaponMuzzleFlashState = false
+      let weaponUse = function() {}
+      let weaponUseDelay = 0
+      let weaponUseId
+      let weaponUseState = false
+      const boundsElement = document.querySelector(".bounds")
+      const boundsContainerElement = document.querySelector(".bounds-container")
+      const enemyAliveStates = Array(16)
+      const enemyElements = Array(16)
+      const enemyHitPoints = Array(16)
+
+      const enemyHit = function(enemyDamage, enemyId) {
+        enemyElements[enemyId].classList.add("hit")
+        enemyElements[enemyId].setAttribute("flinch", pseudorandomnessA)
+
+        const enemyElementsId = setInterval(function() {
+          clearInterval(enemyElementsId)
+          enemyElements[enemyId].classList.remove("hit")
+          enemyElements[enemyId].setAttribute("flinch", "")
+        }, 40)
+
+        enemyHitPoints[enemyId] -= enemyDamage
+
+        if (
+          enemyHitPoints[enemyId] > 0 ||
+          !enemyAliveStates[enemyId]
+        ) {
+          return
+        }
+
+        clearInterval(enemyMoveIds[enemyId])
+        enemyAliveStates[enemyId] = false
+
+        const enemyOffsetLeft = enemyOffsetsLeft[enemyId]
+        const enemyOffsetTop = enemyOffsetsTop[enemyId]
+
+        const enemyMoveStateId = setInterval(function() {
+          if (enemyMoveStates[enemyId]) {
+            return
+          }
+
+          clearInterval(enemyMoveStateId)
+          enemyElements[enemyId].classList.add("burst")
+          enemyElements[enemyId].setAttribute(
+              "style",
+              "border-color: #666; left: "
+                + (enemyOffsetLeft - 35)
+                + "px; top: "
+                + (enemyOffsetTop - 35)
+                + "px;"
+          )
+
+          const enemyBurstId = setInterval(function() {
+            clearInterval(enemyBurstId)
+            enemyElements[enemyId].setAttribute("class", "")
+            enemyElements[enemyId].setAttribute("style", "")
+          }, 150)
+        }, 50)
+
+        let enemyOffsetsSegment = 0
+        let i = 0
+        let j = 0
+        let piecesLargeElementsState = false
+        const piecesLargeElementSelectorOffset = (pseudorandomness & 1) + 1
+        const piecesLargeElementsCount = pseudorandomnessA + 2
+
+        if (enemyOffsetsLeft[enemyId] > 31) {
+          enemyOffsetsSegment = enemyOffsetLeft >> 5
+          enemyOffsetsHorizontalMap[enemyOffsetsSegment - 1][enemyId] = false
+        }
+
+        enemyOffsetsHorizontalMap[enemyOffsetsSegment][enemyId] = false
+        enemyOffsetsHorizontalMap[enemyOffsetsSegment + 1][enemyId] = false
+        enemyOffsetsSegment = 0
+
+        if (enemyOffsetsTop[enemyId] > 31) {
+          enemyOffsetsSegment = enemyOffsetTop >> 5
+          enemyOffsetsVerticalMap[enemyOffsetsSegment - 1][enemyId] = false
+        }
+
+        enemyOffsetsVerticalMap[enemyOffsetsSegment][enemyId] = false
+        enemyOffsetsVerticalMap[enemyOffsetsSegment + 1][enemyId] = false
+        enemyHitPoints[enemyId] = 0
+
+        const piecesLargeElementsId = setInterval(function() {
+          if (piecesLargeElementsState) {
+            return
+          }
+
+          piecesLargeElementsState = true
+
+          if (i > piecesLargeElementsCount) {
+            clearInterval(piecesLargeElementsId)
+            return
+          }
+
+          const piecesLargeElement = piecesLargeElements.pop()
+
+          if (piecesLargeElement != undefined) {
+            piecesLargeElementSelector = (
+              piecesLargeElementSelector + piecesLargeElementSelectorOffset
+            ) & 15
+            piecesLargeElement.setAttribute(
+              "class",
+              "element pieces-large pieces-large-"
+                + piecesLargeElementSelector
+                + " pieces-large-transition pieces-large-transition-"
+                + (piecesLargeElementSelector & 3)
+            )
+            piecesLargeElement.setAttribute(
+              "style",
+              "left: "
+                + enemyOffsetLeft
+                + "px; top: "
+                + enemyOffsetTop
+                + "px; transform: rotate("
+                + pseudorandomness
+                + "deg)"
+            )
+
+            const piecesLargeElementId = setInterval(function() {
+              clearInterval(piecesLargeElementId)
+              piecesLargeElement.setAttribute("class", "pieces-large-hidden")
+              piecesLargeElement.setAttribute("style", "")
+              piecesLargeElements.push(piecesLargeElement)
+            }, 2510)
+          }
+
+          i++
+          piecesLargeElementsState = false
+        }, 10)
+
+        i = pseudorandomnessA
+
+        const boundsShakeInterval = setInterval(function() {
+          if (i > 3) {
+            boundsElement.setAttribute("class", "bounds element")
+            clearInterval(boundsShakeInterval)
+            return
+          }
+
+          boundsElement.setAttribute("class", "bounds element shake-large-" + i)
+          i++
+        }, 10)
+      }
+
+      const enemyMove = function(enemyId) {
+        if (
+          enemyMoveStates[enemyId] ||
+          !enemyAliveStates[enemyId]
+        ) {
+          return
+        }
+
+        enemyMoveStates[enemyId] = true
+
+        let enemyMoveStep = enemyMoveSteps[enemyId] + pseudorandomnessB
+        const enemyOffsetsSegmentLeftPrevious = (
+          enemyOffsetsLeft[enemyId] > 31 ? enemyOffsetsLeft[enemyId] >> 5 : 0
+        )
+        const enemyOffsetsSegmentTopPrevious = (
+          enemyOffsetsTop[enemyId] > 31 ? enemyOffsetsTop[enemyId] >> 5 : 0
+        )
+
+        if (enemyOffsetsLeft[enemyId] > 127) {
+          enemyMoveStep = -enemyMoveStep
+        }
+
+        enemyOffsetsLeft[enemyId] += enemyMoveStep
+        enemyMoveStep = enemyMoveSteps[enemyId] + pseudorandomnessC
+
+        if (enemyOffsetsTop[enemyId] > 180) {
+          enemyMoveStep = -enemyMoveStep
+        }
+
+        enemyOffsetsTop[enemyId] += enemyMoveStep
+
+        const enemyOffsetsSegmentLeftNext = (
+          enemyOffsetsLeft[enemyId] > 31 ? enemyOffsetsLeft[enemyId] >> 5 : 0
+        )
+        const enemyOffsetsSegmentTopNext = (
+          enemyOffsetsTop[enemyId] > 31 ? enemyOffsetsTop[enemyId] >> 5 : 0
+        )
+
+        enemyElements[enemyId].setAttribute(
+          "style",
+          "left: " + enemyOffsetsLeft[enemyId] + "px; top: " + enemyOffsetsTop[enemyId] + "px;"
+        )
+        enemyOffsetsBottom[enemyId] = enemyOffsetsTop[enemyId] + 28
+        enemyOffsetsLeft[enemyId] = enemyOffsetsLeft[enemyId]
+        enemyOffsetsRight[enemyId] = enemyOffsetsLeft[enemyId] + 28
+        enemyOffsetsTop[enemyId] = enemyOffsetsTop[enemyId]
+
+        if (enemyOffsetsSegmentLeftPrevious != enemyOffsetsSegmentLeftNext) {
+          enemyOffsetsHorizontalMap[enemyOffsetsSegmentLeftNext][enemyId] = true
+
+          if (enemyOffsetsSegmentLeftPrevious > enemyOffsetsSegmentLeftNext) {
+            if (enemyOffsetsSegmentLeftNext > 0) {
+              enemyOffsetsHorizontalMap[enemyOffsetsSegmentLeftNext - 1][enemyId] = true
+            }
+
+            enemyOffsetsHorizontalMap[enemyOffsetsSegmentLeftPrevious + 1][enemyId] = false
+          }
+
+          if (enemyOffsetsSegmentLeftPrevious < enemyOffsetsSegmentLeftNext) {
+            enemyOffsetsHorizontalMap[enemyOffsetsSegmentLeftNext + 1][enemyId] = true
+
+            if (enemyOffsetsSegmentLeftPrevious > 0) {
+              enemyOffsetsHorizontalMap[enemyOffsetsSegmentLeftPrevious - 1][enemyId] = false
+            }
+          }
+        }
+
+        if (enemyOffsetsSegmentTopPrevious != enemyOffsetsSegmentTopNext) {
+          enemyOffsetsVerticalMap[enemyOffsetsSegmentTopNext][enemyId] = true
+
+          if (enemyOffsetsSegmentTopPrevious < 1) {
+            enemyOffsetsVerticalMap[enemyOffsetsSegmentTopNext + 1][enemyId] = true
+            enemyOffsetsVerticalMap[0][enemyId] = false
+            enemyMoveStates[enemyId] = false
+            return
+          }
+
+          if (enemyOffsetsSegmentTopNext < 1) {
+            enemyOffsetsVerticalMap[0][enemyId] = true
+            enemyOffsetsVerticalMap[enemyOffsetsSegmentTopPrevious + 1][enemyId] = false
+            enemyMoveStates[enemyId] = false
+            return
+          }
+
+          if (enemyOffsetsSegmentTopPrevious > enemyOffsetsSegmentTopNext) {
+            enemyOffsetsVerticalMap[enemyOffsetsSegmentTopNext - 1][enemyId] = true
+            enemyOffsetsVerticalMap[enemyOffsetsSegmentTopPrevious + 1][enemyId] = false
+            enemyMoveStates[enemyId] = false
+            return
+          }
+
+          enemyOffsetsVerticalMap[enemyOffsetsSegmentTopNext + 1][enemyId] = true
+          enemyOffsetsVerticalMap[enemyOffsetsSegmentTopPrevious - 1][enemyId] = false
+        }
+
+        enemyMoveStates[enemyId] = false
+      }
+
+      const enemyMoveIds = Array(16)
+      const enemyMoveStates = Array(16)
+      const enemyMoveSteps = Array(16)
+      const enemyOffsetsBottom = Array(16)
+      const enemyOffsetsHorizontal = Array(16)
+      const enemyOffsetsHorizontalMap = Array(16)
+      const enemyOffsetsLeft = Array(16)
+      const enemyOffsetsRight = Array(16)
+      const enemyOffsetsTop = Array(16)
+      const enemyOffsetsVertical = Array(16)
+      const enemyOffsetsVerticalMap = Array(16)
+      const piecesLargeElements = Array(24)
+      const piecesSmallElements = Array(24)
+      const playerElement = document.createElement("div")
+
+      const waveStart = function() {
+        let enemyOffsetsSegment = 0
+        let enemySpawnState = false
+        let i = 0
+        let j
+
+        while (i < 16) {
+          while (enemyOffsetsHorizontal[i].length) {
+            enemyOffsetsHorizontal[i].pop()
+          }
+
+          while (enemyOffsetsVertical[i].length) {
+            enemyOffsetsVertical[i].pop()
+          }
+
+          j = 0
+
+          while (j < 16) {
+            enemyOffsetsHorizontalMap[i][j] = false
+            enemyOffsetsVerticalMap[i][j] = false
+            j++
+          }
+
+          i++
+        }
+
+        i = 0
+
+        while (i < 16) {
+          pseudorandomness = (pseudorandomness + 111) & 255
+          enemyOffsetsLeft[i] = pseudorandomness
+          enemyOffsetsTop[i] = -24
+          enemyElements[i].setAttribute(
+            "style",
+            "left: " + enemyOffsetsLeft[i] + "px; top: " + enemyOffsetsTop[i] + "px;"
+          )
+          enemyOffsetsBottom[i] = enemyOffsetsTop[i] + 29
+          enemyOffsetsRight[i] = enemyOffsetsLeft[i] + 29
+          i++
+        }
+
+        i = 0
+
+        enemySpawnId = setInterval(function() {
+          if (enemySpawnState) {
+            return
+          }
+
+          enemySpawnState = true
+
+          if (i < 16) {
+            enemyAliveStates[i] = true
+            enemyOffsetsSegment = 0
+
+            if (enemyOffsetsLeft[i] > 31) {
+              enemyOffsetsSegment = enemyOffsetsLeft[i] >> 5
+
+              if (enemyOffsetsSegment > 0) {
+                enemyOffsetsHorizontalMap[enemyOffsetsSegment - 1][i] = true
+              }
+            }
+
+            enemyOffsetsHorizontalMap[enemyOffsetsSegment][i] = true
+            enemyOffsetsHorizontalMap[enemyOffsetsSegment + 1][i] = true
+            enemyOffsetsSegment = 0
+
+            if (enemyOffsetsTop[i] > 31) {
+              enemyOffsetsSegment = enemyOffsetsTop[i] >> 5
+
+              if (enemyOffsetsSegment > 0) {
+                enemyOffsetsVerticalMap[enemyOffsetsSegment - 1][i] = true
+              }
+            }
+
+            enemyOffsetsVerticalMap[enemyOffsetsSegment][i] = true
+            enemyOffsetsVerticalMap[enemyOffsetsSegment + 1][i] = true
+
+            if (i & 3) {
+              enemyElements[i].setAttribute("class", "element enemy weak")
+              enemyHitPoints[i] = 300
+            } else {
+              enemyElements[i].setAttribute("class", "element enemy strong")
+              enemyHitPoints[i] = 1000
+            }
+
+            enemyMoveIds[i] = setInterval(
+              enemyMove,
+              (i << 1) + 210,
+              i
+            )
+            i++
+            enemySpawnState = false
+            return
+          }
+
+          j = 0
+
+          while (j < 16) {
+            if (enemyAliveStates[j]) {
+              enemySpawnState = false
+              return
+            }
+
+            clearInterval(enemyMoveIds[j])
+            j++
+          }
+
+          clearInterval(enemySpawnId)
+          i = 0
+
+          const waveStartId = setInterval(function() {
+            if (i < 1) {
+              i = 1
+              return
+            }
+
+            clearInterval(waveStartId)
+            waveStart()
+          }, 200)
+        }, 1000)
+      }
+
+      const weaponElement = document.createElement("div")
+
+      const weaponMuzzleFlash = function() {
+        if (weaponMuzzleFlashState) {
+          return
+        }
+
+        weaponMuzzleFlashState = true
+
+        let weaponMuzzleFlashMargin = 2
+        let weaponMuzzleFlashSize = 0
+        const weaponMuzzleFlashOffsetLeft = 135
+        const weaponMuzzleFlashOffsetTop = 252
+
+        const weaponMuzzleFlashId = setInterval(function() {
+          if (weaponMuzzleFlashSize < 50) {
+            weaponMuzzleFlashMargin -= 5
+            weaponMuzzleFlashSize += 10
+            weaponMuzzleFlashElement.setAttribute(
+              "style",
+              "height: "
+                + weaponMuzzleFlashSize
+                + "px; left: "
+                + weaponMuzzleFlashOffsetLeft
+                + "px; margin-left: "
+                + weaponMuzzleFlashMargin
+                + "px; margin-top: "
+                + weaponMuzzleFlashMargin
+                + "px; top: "
+                + weaponMuzzleFlashOffsetTop
+                + "px; width: "
+                + weaponMuzzleFlashSize
+                + "px;"
+            )
+            return
+          }
+
+          clearInterval(weaponMuzzleFlashId)
+          weaponMuzzleFlashElement.setAttribute("style", "left: -64px; top: -64px;")
+          weaponMuzzleFlashState = false
+        }, 15)
+      }
+
+      const weaponMuzzleFlashChildElement = document.createElement("div")
+
+      weaponMuzzleFlashChildElement.setAttribute("class", "element weapon-muzzle-flash")
+      weaponMuzzleFlashChildElement.setAttribute("style", "left: -64px; top: -64px;")
+
+      const weaponMuzzleFlashElement = boundsElement.appendChild(weaponMuzzleFlashChildElement)
+      const weaponProjectileElements = Array(48)
+
+      const weaponProjectileImpact = function(
+        weaponProjectileElement,
+        weaponProjectileOffsetLeft,
+        weaponProjectileOffsetTop
+      ) {
+        let i = 0
+        let j = 0
+        let piecesSmallElementsState = false
+        let weaponProjectileSparkOffsetLeft = weaponProjectileOffsetLeft
+        let weaponProjectileSparkOffsetTop = weaponProjectileOffsetTop
+        let weaponProjectileSparkOpacity = 100
+        const weaponProjectileSparkOffsetLeftStep = (
+          pseudorandomnessE < 0 ? pseudorandomnessE - 4 : pseudorandomnessE + 4
+        )
+        const weaponProjectileSparkOffsetTopStep = (
+          pseudorandomnessF < 0 ? pseudorandomnessF - 4 : pseudorandomnessF + 4
+        )
+
+        pseudorandomnessE = ((pseudorandomnessA + 1) & 3) - ((pseudorandomnessB + 4) & 3)
+        pseudorandomnessF = ((pseudorandomnessC + 3) & 3) - ((pseudorandomnessD + 2) & 3)
+
+        const piecesSmallElementsId = setInterval(function() {
+          if (piecesSmallElementsState) {
+            return
+          }
+
+          piecesSmallElementsState = true
+
+          if (i >= piecesSmallElementsCount) {
+            clearInterval(piecesSmallElementsId)
+
+            if (piecesSmallElementsCount > 1) {
+              piecesSmallElementsCount--
+            }
+
+            return
+          }
+
+          const piecesSmallElement = piecesSmallElements.pop()
+
+          if (piecesSmallElement != undefined) {
+            piecesSmallElementSelector = (piecesSmallElementSelector + 1) & 15
+            piecesSmallElement.setAttribute(
+              "class",
+              "element pieces-small pieces-small-"
+                + piecesSmallElementSelector
+                + " pieces-small-transition"
+            )
+            piecesSmallElement.setAttribute(
+              "style",
+              "left: "
+                + weaponProjectileOffsetLeft
+                + "px; top: "
+                + weaponProjectileOffsetTop
+                + "px;"
+            )
+
+            const piecesSmallElementId = setInterval(function() {
+              clearInterval(piecesSmallElementId)
+              piecesSmallElement.setAttribute("class", "pieces-small-hidden")
+              piecesSmallElement.setAttribute("style", "")
+              piecesSmallElements.push(piecesSmallElement)
+            }, 710)
+          }
+
+          i++
+          piecesSmallElementsState = false
+        }, 20)
+
+        const weaponProjectileSparkId = setInterval(function() {
+          if (j < 6) {
+            weaponProjectileSparkOffsetLeft += weaponProjectileSparkOffsetLeftStep
+            weaponProjectileSparkOffsetTop += weaponProjectileSparkOffsetTopStep
+            weaponProjectileElement.setAttribute(
+              "style",
+              "border-width: 0; height: 4px; left: "
+                + weaponProjectileSparkOffsetLeft
+                + "px; top: "
+                + weaponProjectileSparkOffsetTop
+                + "px; width: 4px; z-index: 5;"
+            )
+            j++
+            return
+          }
+
+          clearInterval(weaponProjectileSparkId)
+          weaponProjectileElement.setAttribute("style", "left: -64px; top: -64px;")
+          weaponProjectileElements.push(weaponProjectileElement)
+        }, 50)
+      }
+
+      const weaponUseMachineGun = function() {
+        const weaponProjectileElement = weaponProjectileElements.pop()
+
+        if (weaponProjectileElement == undefined) {
+          return
+        }
+
+        let boundsShakeDelay = 0
+
+        const boundsShakeInterval = setInterval(function() {
+          if (boundsShakeDelay > 3) {
+            clearInterval(boundsShakeInterval)
+            boundsElement.setAttribute("class", "bounds element")
+            return
+          }
+
+          boundsElement.setAttribute(
+            "class",
+            "bounds element shake-small-" + ((pseudorandomnessA + boundsShakeDelay) & 3)
+          )
+          boundsShakeDelay++
+        }, 15)
+
+        let playerShakeDelay = 0
+
+        const playerShakeId = setInterval(function() {
+          if (playerShakeDelay > 4) {
+            clearInterval(playerShakeId)
+            playerElement.setAttribute("class", "element player")
+            weaponElement.setAttribute("class", "element weapon")
+            return
+          }
+
+          playerElement.setAttribute("class", "element player shake-large-" + pseudorandomnessA)
+          weaponElement.setAttribute("class", "element shake-medium-" + pseudorandomnessB + " weapon")
+          pseudorandomnessA = (pseudorandomnessA + 1) & 3
+          playerShakeDelay++
+        }, 25)
+
+        weaponMuzzleFlash()
+
+        const weaponProjectileOffsetLeftStep = pseudorandomnessE * 0.5
+        const weaponProjectileOffsetTopStep = (pseudorandomnessF - 23) * 0.5
+        let weaponProjectileOffsetDelay = 0
+        let weaponProjectileOffsetLeft = weaponProjectileOffsetLeftStep + 137
+        let weaponProjectileOffsetTop = weaponProjectileOffsetTopStep + 258
+
+        const weaponProjectileMove = function(weaponProjectileMoveId) {
+          weaponProjectileOffsetDelay ^= 1
+          weaponProjectileOffsetLeft = weaponProjectileOffsetLeft + weaponProjectileOffsetLeftStep
+          weaponProjectileOffsetTop = weaponProjectileOffsetTop + weaponProjectileOffsetTopStep
+
+          if (weaponProjectileOffsetDelay) {
+            weaponProjectileElement.setAttribute(
+              "style",
+              "left: " + weaponProjectileOffsetLeft + "px; top: " + weaponProjectileOffsetTop + "px;"
+            )
+          }
+
+          const enemyIds = enemyOffsetsVertical[
+            weaponProjectileOffsetTop > 0 ? weaponProjectileOffsetTop >> 5 : 0
+          ]
+
+          if (
+            enemyIds.length &&
+            enemyOffsetsHorizontal[
+              weaponProjectileOffsetLeft > 0 ? weaponProjectileOffsetLeft >> 5 : 0
+            ].length
+          ) {
+            const enemyId = enemyIds.find(function(enemyId) {
+              return (
+                weaponProjectileOffsetLeft <= enemyOffsetsRight[enemyId] &&
+                weaponProjectileOffsetTop <= enemyOffsetsBottom[enemyId] &&
+                (weaponProjectileOffsetLeft + 8) >= enemyOffsetsLeft[enemyId] &&
+                (weaponProjectileOffsetTop + 8) >= enemyOffsetsTop[enemyId]
+              )
+            })
+
+            if (enemyId != undefined) {
+              clearInterval(weaponProjectileMoveId)
+              weaponProjectileImpact(
+                weaponProjectileElement,
+                weaponProjectileOffsetLeft,
+                weaponProjectileOffsetTop
+              )
+              enemyHit(80, enemyId)
+            }
+          }
+        }
+
+        const weaponProjectileMoveId = setInterval(function() {
+          if (weaponProjectileOffsetTop > -64) {
+            weaponProjectileMove(weaponProjectileMoveId)
+            return
+          }
+
+          clearInterval(weaponProjectileMoveId)
+          weaponProjectileElements.push(weaponProjectileElement)
+        }, 15)
+      }
+
+      const weaponUseShotgun = function() {
+        if (weaponUseDelay < 3) {
+          weaponUseDelay++
+          return
+        }
+
+        weaponUseDelay = 0
+
+        let boundsShakeDelay = 0
+
+        const boundsShakeInterval = setInterval(function() {
+          if (boundsShakeDelay > 3) {
+            clearInterval(boundsShakeInterval)
+            boundsElement.setAttribute("class", "bounds element")
+            return
+          }
+
+          boundsElement.setAttribute(
+            "class",
+            "bounds element shake-medium-" + ((pseudorandomnessA + boundsShakeDelay) & 3)
+          )
+          boundsShakeDelay++
+        }, 15)
+
+        let playerShakeDelay = 0
+
+        const playerShakeId = setInterval(function() {
+          if (playerShakeDelay > 4) {
+            clearInterval(playerShakeId)
+            playerElement.setAttribute("class", "element player")
+            weaponElement.setAttribute("class", "element weapon")
+            return
+          }
+
+          playerElement.setAttribute("class", "element player shake-large-" + pseudorandomnessA)
+          weaponElement.setAttribute("class", "element shake-medium-" + pseudorandomnessB + " weapon")
+          pseudorandomnessA = (pseudorandomnessA + 1) & 3
+          playerShakeDelay++
+        }, 25)
+
+        weaponMuzzleFlash()
+
+        let weaponProjectileDelay = 0
+
+        const weaponProjectileSpawn = function() {
+          const weaponProjectileElement = weaponProjectileElements.pop()
+
+          if (weaponProjectileElement == undefined) {
+            return
+          }
+
+          const weaponProjectileOffsetLeftStep = (
+            pseudorandomnessA - pseudorandomnessB
+          ) * 0.5
+          const weaponProjectileOffsetTopStep = (
+            (pseudorandomnessC - pseudorandomnessD) - 23
+          ) * 0.5
+          let weaponProjectileOffsetDelay = 0
+          let weaponProjectileOffsetLeft = weaponProjectileOffsetLeftStep + 137
+          let weaponProjectileOffsetTop = weaponProjectileOffsetTopStep + 258
+
+          const weaponProjectileMove = function(weaponProjectileMoveId) {
+            weaponProjectileOffsetDelay ^= 1
+            weaponProjectileOffsetLeft = weaponProjectileOffsetLeft + weaponProjectileOffsetLeftStep
+            weaponProjectileOffsetTop = weaponProjectileOffsetTop + weaponProjectileOffsetTopStep
+
+            if (weaponProjectileOffsetDelay) {
+              weaponProjectileElement.setAttribute(
+                "style",
+                "left: " + weaponProjectileOffsetLeft + "px; top: " + weaponProjectileOffsetTop + "px;"
+              )
+            }
+
+            const enemyIds = enemyOffsetsVertical[
+              weaponProjectileOffsetTop > 0 ? weaponProjectileOffsetTop >> 5 : 0
+            ]
+
+            if (
+              enemyIds.length &&
+              enemyOffsetsHorizontal[
+                weaponProjectileOffsetLeft > 0 ? weaponProjectileOffsetLeft >> 5 : 0
+              ].length
+            ) {
+              const enemyId = enemyIds.find(function(enemyId) {
+                return (
+                  weaponProjectileOffsetLeft <= enemyOffsetsRight[enemyId] &&
+                  weaponProjectileOffsetTop <= enemyOffsetsBottom[enemyId] &&
+                  (weaponProjectileOffsetLeft + 8) >= enemyOffsetsLeft[enemyId] &&
+                  (weaponProjectileOffsetTop + 8) >= enemyOffsetsTop[enemyId]
+                )
+              })
+
+              if (enemyId != undefined) {
+                clearInterval(weaponProjectileMoveId)
+                weaponProjectileImpact(
+                  weaponProjectileElement,
+                  weaponProjectileOffsetLeft,
+                  weaponProjectileOffsetTop
+                )
+                enemyHit(100, enemyId)
+              }
+            }
+          }
+
+          const weaponProjectileMoveId = setInterval(function() {
+            if (weaponProjectileOffsetTop > -64) {
+              weaponProjectileMove(weaponProjectileMoveId)
+              return
+            }
+
+            clearInterval(weaponProjectileMoveId)
+            weaponProjectileElements.push(weaponProjectileElement)
+          }, 15)
+        }
+
+        while (weaponProjectileDelay < 36) {
+          const weaponProjectileSpawnId = setInterval(function() {
+            clearInterval(weaponProjectileSpawnId)
+            pseudorandomnessA = (pseudorandomnessA + 1) & 3
+            pseudorandomnessB = (pseudorandomnessB + 2) & 3
+            pseudorandomnessC = (pseudorandomnessC + 1) & 3
+            pseudorandomnessD = (pseudorandomnessD + 2) & 3
+            weaponProjectileSpawn()
+          }, weaponProjectileDelay)
+
+          weaponProjectileDelay += 6
+        }
+      }
+
+      onload = function() {
+        let playState = false
+
+        const play = function() {
+          let boundsOpacity = 1
+          let enemyOffsetsCount
+          let enemyOffsetsState = false
+          let i = 0
+          let j
+          let k
+          let piecesSmallElementsCountState = false
+          let pseudorandomnessState = false
+
+          while (i < 16) {
+            enemyElements[i] = boundsElement.appendChild(
+              document.createElement("div")
+            )
+            enemyMoveStates[i] = false
+            enemyMoveSteps[i] = (i & 3) + 3
+            i++
+          }
+
+          i = 0
+
+          while (i < 24) {
+            piecesLargeElements[i] = document.createElement("div")
+            piecesLargeElements[i].setAttribute(
+              "class",
+              "pieces-large-hidden"
+            )
+            j = 0
+
+            while (j < 9) {
+              const piecesLargeElementChildElement = document.createElement("div")
+
+              piecesLargeElementChildElement.setAttribute(
+                "class",
+                "pieces-large-" + j
+              )
+              piecesLargeElements[i].appendChild(
+                piecesLargeElementChildElement
+              )
+              j++
+            }
+
+            piecesLargeElements[i] = boundsElement.appendChild(
+              piecesLargeElements[i]
+            )
+            piecesSmallElements[i] = document.createElement("div")
+            piecesSmallElements[i].setAttribute(
+              "class",
+              "pieces-small-hidden"
+            )
+            j = 0
+
+            while (j < 3) {
+              const piecesSmallElementChildElement = document.createElement("div")
+
+              piecesSmallElementChildElement.setAttribute(
+                "class",
+                "pieces-small-" + j
+              )
+              piecesSmallElements[i].appendChild(
+                piecesSmallElementChildElement
+              )
+              j++
+            }
+
+            piecesSmallElements[i] = boundsElement.appendChild(
+              piecesSmallElements[i]
+            )
+            i++
+          }
+
+          playerElement.setAttribute("class", "element player")
+          playerElement.setAttribute(
+            "style",
+            "left: 127px; top: 267px;"
+          )
+          boundsElement.append(playerElement)
+          weaponElement.setAttribute("class", "element weapon")
+          weaponElement.setAttribute(
+            "style",
+            "left: 135px; top: 252px;"
+          )
+          boundsElement.appendChild(weaponElement)
+          i = 0
+
+          while (i < 48) {
+            weaponProjectileElements[i] = document.createElement("div")
+            weaponProjectileElements[i].setAttribute(
+              "class",
+              "element weapon-projectile"
+            )
+            weaponProjectileElements[i].setAttribute(
+              "style",
+              "left: -64px; top: -64px;"
+            )
+            weaponProjectileElements[i] = boundsElement.appendChild(
+              weaponProjectileElements[i]
+            )
+            i++
+          }
+
+          boundsElement.setAttribute("opacity", "0")
+
+          setInterval(function() {
+            if (weaponUse == weaponUseMachineGun) {
+              weaponUse = weaponUseShotgun
+            } else {
+              weaponUse = weaponUseMachineGun
+            }
+          }, 2000)
+
+          weaponUse = weaponUseMachineGun
+
+          weaponUseId = setInterval(function() {
+            if (weaponUseState) {
+              return
+            }
+
+            weaponUseState = true
+            weaponUse()
+            weaponUseState = false
+          }, 130)
+
+          i = 0
+
+          while (i < 16) {
+            enemyOffsetsHorizontal[i] = Array(0)
+            enemyOffsetsHorizontalMap[i] = Array(16).fill(false)
+            enemyOffsetsVertical[i] = Array(0)
+            enemyOffsetsVerticalMap[i] = Array(16).fill(false)
+            i++
+          }
+
+          setInterval(function() {
+            if (pseudorandomnessState) {
+              return
+            }
+
+            pseudorandomnessState = true
+            pseudorandomness = (pseudorandomness + 215) & 255
+            pseudorandomnessA = pseudorandomness & 3
+            pseudorandomnessB = (pseudorandomness >> 2) & 3
+            pseudorandomnessC = (pseudorandomness >> 4) & 3
+            pseudorandomnessD = (pseudorandomness - pseudorandomnessB) & 3
+            pseudorandomnessE = pseudorandomnessA - pseudorandomnessC
+            pseudorandomnessF = pseudorandomnessB - pseudorandomnessD
+            enemyMoveSteps[i] = ((enemyMoveSteps[i] + pseudorandomnessF) & 3) + 3
+            i++
+
+            if (i > 15) {
+              i = 0
+            }
+
+            pseudorandomnessState = false
+          }, 30)
+
+          setInterval(function() {
+            if (enemyOffsetsState) {
+              return
+            }
+
+            enemyOffsetsState = true
+            j = 0
+
+            while (j < 16) {
+              enemyOffsetsCount = enemyOffsetsHorizontal[j].length
+              k = 0
+
+              while (k < 16) {
+                if (enemyOffsetsHorizontalMap[j][k]) {
+                  enemyOffsetsHorizontal[j].push(k)
+                }
+
+                k++
+              }
+
+              k = 0
+
+              while (k < enemyOffsetsCount) {
+                enemyOffsetsHorizontal[j].shift()
+                k++
+              }
+
+              j++
+            }
+
+            j = 0
+
+            while (j < 16) {
+              enemyOffsetsCount = enemyOffsetsVertical[j].length
+              k = 0
+
+              while (k < 16) {
+                if (enemyOffsetsVerticalMap[j][k]) {
+                  enemyOffsetsVertical[j].push(k)
+                }
+
+                k++
+              }
+
+              k = 0
+
+              while (k < enemyOffsetsCount) {
+                enemyOffsetsVertical[j].shift()
+                k++
+              }
+
+              j++
+            }
+
+            enemyOffsetsState = false
+          }, 30)
+
+          setInterval(function() {
+            if (piecesSmallElementsCountState) {
+              return
+            }
+
+            piecesSmallElementsCountState = true
+
+            if (piecesSmallElementsCount < 5) {
+              piecesSmallElementsCount++
+            }
+
+            piecesSmallElementsCountState = false
+          }, 250)
+
+          const boundsFadeInDelayId = setInterval(function() {
+            clearInterval(boundsFadeInDelayId)
+
+            const boundsFadeInId = setInterval(function() {
+              if (boundsOpacity < 9) {
+                boundsOpacity++
+                boundsElement.setAttribute("opacity", boundsOpacity)
+                return
+              }
+
+              clearInterval(boundsFadeInId)
+              boundsElement.removeAttribute("opacity")
+              waveStart()
+            }, 100)
+          }, 200)
+        }
+
+        const playId = setInterval(function() {
+          if (playState) {
+            return
+          }
+
+          playState = true
+
+          if (document.readyState == "complete") {
+            clearInterval(playId)
+            play()
+          }
+
+          playState = false
+        }, 100)
+      }
+    </script>
+  </body>
+</html>

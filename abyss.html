@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Abyss™</title>
+    <meta name="description" content="Abyss™ is the fastest 64-bit PRNG that passes all Dieharder tests.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com/abyss">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+        margin: 0;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #888;
+        display: block;
+        font-size: 11px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer p {
+          margin: 0 0 9px;
+        }
+          footer p a {
+            margin-bottom: 10px;
+          }
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+        max-width: 555px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+        position: relative;
+      }
+        header a {
+          display: block;
+          width: 30px;
+        }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 58px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header><a href="/"><img height="36" src="ghostproxies-logo-black.svg" width="36"></a></header>
+    <main>
+      <h1>Abyss<span style="margin-left: 1px;">™</span></h1>
+      <p>Abyss™ is the fastest 64-bit PRNG that passes all Dieharder tests.</p>
+      <p>Although GhostProxies makes hyper-efficient <a href="https://github.com/ghostproxies">open-source PRNGs</a>, the statistical stringence is a huge performance bottleneck in some speed-critical applications.</p>
+      <p>Abyss™ speeds up noise sampling procedures that were slowing down AI models, dataset augmentation, signal processing, simulations and video game engines.</p>
+      <p>Abyss™ uses the latest Dieharder 3.31.1 test suite as a minimum PRNG standard that trades off the highest level of statistical stringence for next-generation speed.</p>
+      <p>The following non-cryptographic PRNG library (with flexible output bit widths) can be implemented in compliance with a <a href="mailto:william@ghostproxies.com">proprietary license</a>.</p>
+      <h2>Implementation</h2>
+      <p>Abyss™ was implemented in C (requiring the <code>stdint.h</code> header to define a 64-bit, unsigned integral type for <code>uint64_t</code>).</p>
+      <p>Each Abyss™ variant has <a href="https://github.com/ghostproxies/pulsefield">PulseField™</a> (for independent parallel sequences), a minimum period of at least 2⁶⁴ and reversibility.</p>
+      <code>Abyss™ is in development and coming soon.</code>
+      <h2 style="margin-top: 21px;">Randomness</h2>
+      <p>Each Abyss™ PRNG variant passes the latest Dieharder 3.31.1 tests with reproducible results (each state variable was seeded with <code>0</code>).</p>
+      <p>In further detail, a PRNG that "passes Dieharder" passes at least 1 full set of the default <code>dieharder -a -g 200</code> tests (with no <code>FAILED</code> results).</p>
+      <p>If statistical stringence is required, <a href="https://github.com/ghostproxies/blastcircuit">BlastCircuit™</a>, <a href="https://github.com/ghostproxies/recoilfuse">RecoilFuse™</a> and <a href="https://github.com/ghostproxies/flurrygrid">FlurryGrid™</a> each have hyper-fast speed without compromising excellent statistical test results.</p>
+      <h2 style="margin-top: 21px;">Speed</h2>
+      <p>Each Abyss™ variant is the fastest 64-bit PRNG (compared to 64-bit PRNGs with the same output bit width) within the aforementioned randomness constraints.</p>
+      <p>Abyss™ speed claims are consistent across 64-bit architectures, compilers (GCC, CC and Clang), compiler settings and programming languages (excluding JavaScript).</p>
+      <p>Abyss™ disputes should log platform details and the fastest process execution speed (with <code>gcc -O3</code>) among several speed test repetitions.</p>
+      <p>The aforementioned speed test should generate (and hash) 1 billion pseudorandom integer generation results in a <code>#pragma GCC unroll 0</code> loop.</p>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto:william@ghostproxies.com">Contact</a><a href="privacy">Privacy</a></p>
+      <small>Copyright 2013-2026 GhostProxies</small>
+      <small>Unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small>GhostProxies is reluctantly a simulation of a successful commercial business (that isn't enabled to charge paying clients) with restricted economic participation as a result of technical issues with financial institutions (including a bad credit score and outstanding debt to tax authorities). Therefore, GhostProxies product pricing may be subject to change after the aformentioned issues are resolved.</small>
+      <small>GhostProxies is proudly made in the United States of America.</small>
+    </footer>
+  </body>
+</html>

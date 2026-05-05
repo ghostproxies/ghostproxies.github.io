@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GhostProxies: Ectoplasm™</title>
+    <meta name="description" content="Ectoplasm™ is the qubit-aligned entropy schema by GhostProxies for hyper-efficient IID entropy on classical computers.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://ghostproxies.com/ectoplasm">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p {
+        width: 100%;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+        margin: 0;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #888;
+        display: block;
+        font-size: 11px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer a {
+          display: inline-block;
+          margin-right: 15px;
+        }
+        footer p {
+          margin: 0 0 9px;
+        }
+          footer p a {
+            margin-bottom: 10px;
+          }
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+        max-width: 555px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+        position: relative;
+      }
+        header a {
+          display: block;
+          width: 30px;
+        }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 51px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+      .visual {
+        min-height: 228px;
+        padding: 27px 27px 21px;
+      }
+    </style>
+  </head>
+  <body>
+    <header><a href="/"><img height="36" src="ghostproxies-logo-black.svg" width="36"></a></header>
+    <main>
+      <h1>Ectoplasm<span style="margin-left: 1px;">™</span></h1>
+      <p>Ectoplasm™ is the qubit-aligned entropy schema by GhostProxies for hyper-efficient IID entropy on classical computers.</p>
+      <p>The following schema can be implemented in compliance with a <a href="mailto:william@ghostproxies.com">proprietary license</a> in platform-specific cases as a high-quality entropy source for efficient seeding.</p>
+      <h2>Example</h2>
+      <p style="margin-bottom: 21px;">The following POSIX C program is a platform-specific Ectoplasm™ example (requiring C99-compliant bit widths in <code>stdint.h</code> for <code>uint8_t</code>, <code>int32_t</code> and <code>uint32_t</code>).</p>
+      <code>#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdint.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdio.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdlib.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;time.h&gt;</span>
+
+<span style="color: #ccc;">void</span> <span style="color: #eee;">error</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #bbb;">exit</span>(<span style="color: #fff;">EXIT_FAILURE</span>);
+}
+
+<span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">allocate</span>(<span style="color: #ccc;">uint8_t</span> *<span style="color: #eee;">oscillation</span>, <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #ccc;">int32_t</span> <span style="color: #eee;">is_clock_measurement</span>;
+
+  <span style="color: #bbb;">if</span> (!(*<span style="color: #eee;">oscillation</span>)) {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_getres</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> ^ <span style="color: #fff;">1</span>;
+  } <span style="color: #bbb;">else</span> {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_getres</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span>;
+  }
+
+  <span style="color: #bbb;">if</span> (<span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> != <span style="color: #fff;">1</span>) {
+    <span style="color: #eee;">error</span>();
+  }
+
+  *<span style="color: #eee;">oscillation</span> += <span style="color: #eee;">is_clock_measurement</span>;
+
+  <span style="color: #bbb;">if</span> (!(*<span style="color: #eee;">oscillation</span>)) {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span> ^ <span style="color: #fff;">1</span>;
+  } <span style="color: #bbb;">else</span> {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span>;
+  }
+
+  *<span style="color: #eee;">oscillation</span> += <span style="color: #eee;">is_clock_measurement</span>;
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">s</span>-><span style="color: #eee;">tv_nsec</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">oscillate</span>(<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">oscillation</span>,
+                  <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>,
+                  <span style="color: #ccc;">uint8_t</span> *<span style="color: #eee;">magnitude</span>) {
+  <span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">allocations</span>[<span style="color: #fff;">3</span>] = {<span style="color: #fff;">0</span>, <span style="color: #fff;">0</span>, <span style="color: #fff;">0</span>};
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">i</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">j</span>;
+
+  <span style="color: #bbb;">while</span> (
+    <span style="color: #eee;">allocations</span>[<span style="color: #fff;">0</span>] == <span style="color: #eee;">allocations</span>[<span style="color: #fff;">1</span>] ||
+    <span style="color: #eee;">allocations</span>[<span style="color: #fff;">1</span>] == <span style="color: #eee;">allocations</span>[<span style="color: #fff;">2</span>]
+  ) {
+    <span style="color: #eee;">i</span> = <span style="color: #fff;">0</span>;
+
+    <span style="color: #bbb;">while</span> (<span style="color: #eee;">i</span> < <span style="color: #fff;">3</span>) {
+      <span style="color: #eee;">j</span> = <span style="color: #fff;">0</span>;
+
+      <span style="color: #bbb;">while</span> (<span style="color: #eee;">j</span> < *<span style="color: #eee;">magnitude</span>) {
+        <span style="color: #eee;">oscillation</span> += <span style="color: #fff;">111</span>;
+        <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillation</span> >> <span style="color: #fff;">3</span>;
+        <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>] += <span style="color: #eee;">allocate</span>(&<span style="color: #eee;">oscillation</span>, <span style="color: #eee;">s</span>);
+        <span style="color: #eee;">oscillation</span> += <span style="color: #fff;">111</span>;
+        <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillation</span> >> <span style="color: #fff;">4</span>;
+        <span style="color: #eee;">j</span>++;
+      }
+
+      <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">allocations</span>[<span style="color: #fff;">i</span>];
+      <span style="color: #eee;">i</span>++;
+    }
+
+    <span style="color: #bbb;">if</span> (*<span style="color: #eee;">magnitude</span> < <span style="color: #fff;">0x10</span>) {
+      *<span style="color: #eee;">magnitude</span> <<= <span style="color: #fff;">1</span>;
+    }
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">oscillation</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">collapse</span>(<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">oscillation</span>, <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #bbb;">return</span> (<span style="color: #eee;">oscillation</span> + <span style="color: #fff;">s</span>-><span style="color: #fff;">tv_nsec</span>) & <span style="color: #fff;">7</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">ectoplasm</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec s</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">oscillation</span> = <span style="color: #fff;">111</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">entropy</span> = <span style="color: #fff;">1</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">magnitude</span> = <span style="color: #fff;">1</span>;
+
+  <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">allocate</span>(&<span style="color: #eee;">oscillation</span>, &<span style="color: #eee;">s</span>);
+
+  <span style="color: #bbb;">while</span> (!(<span style="color: #eee;">entropy</span> >> <span style="color: #fff;">6</span>)) {
+    <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>, &<span style="color: #eee;">magnitude</span>);
+    <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> << <span style="color: #fff;">2</span>) ^ <span style="color: #eee;">collapse</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+  }
+
+  <span style="color: #eee;">oscillation</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>, &<span style="color: #eee;">magnitude</span>);
+  <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> << <span style="color: #fff;">2</span>) ^ <span style="color: #eee;">collapse</span>(<span style="color: #eee;">oscillation</span>, &<span style="color: #fff;">s</span>);
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">entropy</span>;
+}
+
+<span style="color: #ccc;">int</span> <span style="color: #bbb;">main</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">i</span> = <span style="color: #fff;">0</span>;
+
+  <span style="color: #bbb;">while</span> (<span style="color: #eee;">i</span> < <span style="color: #fff;">10</span>) {
+    <span style="color: #eee;">i</span>++;
+    <span style="color: #bbb;">printf</span>(<span style="color: #fff;">"Result %u is %u.\n"</span>, <span style="color: #eee;">i</span>, <span style="color: #eee;">ectoplasm</span>());
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #fff;">0</span>;
+}</code>
+      <p style="margin-top: 21px;">Each platform-specific Ectoplasm™ implementation may require further <code>oscillate</code> procedure tuning with <a href="nightmare">Nightmare™</a>.</p>
+      <h2 style="margin-top: 21px;">Qubit Alignment</h2>
+      <p>Ectoplasm™ uses CPU oscillation measurements to mimic qubit entropy (without either qubit phenomena inconsistencies or round-trip quantum computer errors).</p>
+      <p><code style="margin-left: 0;">oscillate</code> mimics qubit superposition and quantum error correction.</p>
+      <p><code style="margin-left: 0;">allocate</code> mimics auxiliary qubit allocation for quantum error correction.</p>
+      <p><code style="margin-left: 0;">collapse</code> mimics qubit measurement.</p>
+      <p><code style="margin-left: 0;">ectoplasm</code> returns the entangled result of each <code>collapse</code> measurement.</p>
+      <h2>Independence</h2>
+      <p>Each <code>ectoplasm</code> procedure entangles high-precision measurements of independent CPU time fluctuations within a shared pool of system-wide CPU time fluctuations.</p>
+      <p>The insignificance of system-wide CPU time fluctuations to an IID <code>ectoplasm</code> byte is similar to the insignificance of wind speed fluctuations to an IID coin flip.</p>
+      <p>Therefore, each <code>ectoplasm</code> byte is independent.</p>
+      <h2>Randomness</h2>
+      <p>Ectoplasm™ randomness tests were performed on an AMD A4-9120C with <code>gcc -O3</code>.</p>
+      <p>Ectoplasm™ yields excellent test results among several dozen NIST SP 800-90B IID entropy assessment runs that each generated 1 million <code>ectoplasm</code> bytes.</p>
+      <p>In <code>ea_iid</code> and <code>ea_restart</code>, Ectoplasm™ had an <code>H_original</code> of 7.86+ (out of 8), an <code>H_bitstring</code> of 0.997+ (out of 1) and no statistical test failures.</p>
+      <p>The entropy estimates improved (an <code>H_original</code> of 7.95+ and an <code>H_bitstring</code> of 0.999+) as the count of <code>ectoplasm</code> bytes increased to 10 million.</p>
+      <p>Furthermore, Ectoplasm™ yields excellent results in the latest stringent statistical test suites (such as PractRand 0.96) without post-processing <code>ectoplasm</code> output.</p>
+      <h2>Speed</h2>
+      <p>Ectoplasm™ speed tests were performed on an AMD A4-9120C with <code>gcc -O3</code>.</p>
+      <p>739 milliseconds was the fastest process execution speed among several test runs that generate (and hash) 1 million <code>ectoplasm</code> bits in a <code>#pragma GCC unroll 0</code> loop.</p>
+      <p>Furthermore, parallel <code>ectoplasm</code> function invocations and GPU acceleration can both increase speed in application-specific cases (depending on hardware capacity).</p>
+      <h2>Reliability</h2>
+      <p>Ectoplasm™ is compatible with any platform that has clock reading functions, nanosecond-precision time measurements and nanosecond-interval time continuity.</p>
+      <p>Ectoplasm™ is resistent to environmental factors and immune to entropy pool limitations that other entropy sources are sensitive to.</p>
+      <p>Requests to <code>ectoplasm</code> return non-blocking entropy that's PQC-compliant, VM-compatible and non-depletable (within hardware capacity).</p>
+      <p>Anomalous system clock measurement failures in <code>ectoplasm</code> abort with <code>EXIT_FAILURE</code>, although falling back to OS entropy interfaces may be preferred.</p>
+      <p>Auxiliary bit allocation with time measurement variance validation in <code>allocate</code> increases resilience against processes that set a nanosecond-precision clock time.</p>
+      <p>Adversarial cases should be tested in a sandbox environment by rapidly setting the appropriate clock to a fixed time in parallel with <code>ectoplasm</code> procedures.</p>
+      <p>Clock functions should be verified as immune to Y2K38 (for example, POSIX.1-2024 requires that the width of <code>time_t</code> is at least 64 bits).</p>
+      <p>GhostProxies hasn't experienced any system clock measurement failures through extensive, ongoing stress testing.</p>
+      <p>GhostProxies can't reliably host an Ectoplasm™ cloud API (due to the potential attack surface for millions of simultaneous ethical residential proxy network IP addresses).</p>
+    </main>
+    <footer>
+      <p><a href="/">Home</a><a href="brand">Brand</a><a href="mailto:william@ghostproxies.com">Contact</a><a href="privacy">Privacy</a></p>
+      <small>Copyright 2013-2026 GhostProxies</small>
+      <small>Unofficial mentions of GhostProxies and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small>GhostProxies is reluctantly a simulation of a successful commercial business (that isn't enabled to charge paying clients) with restricted economic participation as a result of technical issues with financial institutions (including a bad credit score and outstanding debt to tax authorities). Therefore, GhostProxies product pricing may be subject to change after the aformentioned issues are resolved.</small>
+      <small>GhostProxies is proudly made in the United States of America.</small>
+    </footer>
+  </body>
+</html>
